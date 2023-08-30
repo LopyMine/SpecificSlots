@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "specificslots",
+  "version": "${version}",
+  "name": "Specific Slots",
+  "description": "Simple configuration of your inventory for items!",
+  "authors": [
+    "LopyMine [Code]",
+    "TanTanich [Textures]"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/specificslots/icon/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.lopymine.specificslots.client.SpecificSlotsClient"
+    ],
+    "main": [
+      "net.lopymine.specificslots.SpecificSlots"
+    ],
+    "modmenu": [
+      "net.lopymine.specificslots.modmenu.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "SpecificSlots.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

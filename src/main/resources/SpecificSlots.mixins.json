@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.lopymine.specificslots.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [],
+  "client": [
+    "CreativeInventoryScreenMixin",
+    "HandledScreenMixin",
+    "InGameHudMixin",
+    "InventoryScreenMixin",
+    "ReloadableResourceManagerImplMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
