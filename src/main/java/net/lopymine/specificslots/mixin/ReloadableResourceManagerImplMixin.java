@@ -1,6 +1,6 @@
 package net.lopymine.specificslots.mixin;
 
-import net.lopymine.specificslots.textures.CustomGhostTextureLoader;
+import net.lopymine.specificslots.textures.SpecificAdditionLoader;
 import net.minecraft.resource.ReloadableResourceManagerImpl;
 import net.minecraft.resource.ResourcePack;
 import net.minecraft.resource.ResourceReload;
@@ -19,7 +19,8 @@ public class ReloadableResourceManagerImplMixin {
 
     @Inject(at = @At("RETURN"), method = "reload")
     private void render(Executor prepareExecutor, Executor applyExecutor, CompletableFuture<Unit> initialStage, List<ResourcePack> packs, CallbackInfoReturnable<ResourceReload> cir) {
-        CustomGhostTextureLoader.load(packs);
+        if (packs.isEmpty()) return;
+        SpecificAdditionLoader.load(packs);
     }
 
 }

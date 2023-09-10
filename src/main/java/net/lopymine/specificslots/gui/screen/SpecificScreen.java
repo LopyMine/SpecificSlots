@@ -12,7 +12,6 @@ public class SpecificScreen extends CottonClientScreen {
     @Override
     public boolean keyPressed(int ch, int keyCode, int modifiers) {
         if(description.getRootPanel().onKeyPressed(ch,keyCode,modifiers) == InputResult.PROCESSED) return true;
-
         return super.keyPressed(ch, keyCode, modifiers);
     }
 }

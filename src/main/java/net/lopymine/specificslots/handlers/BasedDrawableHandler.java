@@ -71,10 +71,12 @@ public class BasedDrawableHandler<T extends ScreenHandler> implements DrawableHa
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
         if (player == null) return null;
         if (handler == null) return null;
+
         for (Slot slot : handler.slots) {
             if (slot.inventory == player.getInventory()) return slot;
 
         }
+
         return null;
     }
 
@@ -84,12 +86,13 @@ public class BasedDrawableHandler<T extends ScreenHandler> implements DrawableHa
         if (player == null) return null;
         if (handler == null) return null;
         Slot slot = getFirstInventorySlot(handler);
+
         if (slot == null) return null;
         int index = slot.id + 27;
         if (index > handler.slots.size()) return null;
 
         Slot hotbarSlot = handler.getSlot(index);
-        if(hotbarSlot.inventory == player.getInventory()) return hotbarSlot;
+        if (hotbarSlot.inventory == player.getInventory()) return hotbarSlot;
         return null;
     }
 

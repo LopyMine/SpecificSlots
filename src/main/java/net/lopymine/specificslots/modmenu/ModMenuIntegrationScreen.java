@@ -3,19 +3,19 @@ package net.lopymine.specificslots.modmenu;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.lopymine.specificslots.config.defalt.DefaultSpecificConfig;
-import net.lopymine.specificslots.config.defalt.DefaultSpecificConfigManager;
+import net.lopymine.specificslots.config.SpecificConfig;
+import net.lopymine.specificslots.config.SpecificConfigManager;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
 public class ModMenuIntegrationScreen {
     public static Screen createScreen(Screen parentScreen) {
-        DefaultSpecificConfig config = DefaultSpecificConfigManager.getDefaultConfig();
+        SpecificConfig config = SpecificConfigManager.getConfig();
 
         ConfigBuilder configBuilder = ConfigBuilder.create()
                 .setParentScreen(parentScreen)
                 .setTitle(Text.of("Specific Slots"))
-                .setSavingRunnable(() -> DefaultSpecificConfigManager.setDefaultConfig(config));
+                .setSavingRunnable(() -> SpecificConfigManager.setConfig(config));
 
         ConfigCategory main = configBuilder.getOrCreateCategory(Text.of("Specific Slots"));
         ConfigEntryBuilder entryBuilder = configBuilder.entryBuilder();

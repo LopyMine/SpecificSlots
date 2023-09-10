@@ -3,9 +3,9 @@ package net.lopymine.specificslots.utils;
 import io.github.cottonmc.cotton.gui.client.BackgroundPainter;
 import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
 import net.lopymine.specificslots.SpecificSlots;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.gui.tooltip.BundleTooltipComponent;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -25,17 +25,17 @@ public class DrawUtils {
     public static Identifier lock = new Identifier(SpecificSlots.ID, "textures/gui/buttons/lock.png");
     public static Identifier unlock = new Identifier(SpecificSlots.ID, "textures/gui/buttons/unlock.png");
 
-    public static void drawSlot(MatrixStack matrices, int x, int y, boolean isDarkMode) {
+    public static void drawSlot(DrawContext context, int x, int y, boolean isDarkMode) {
         float px = 1 / 128f;
 
         float buttonLeft = 0 * px;
         float buttonTop = 0 * px;
         float buttonWidth = 18 * px;
         float buttonHeight = 18 * px;
-        ScreenDrawing.texturedRect(matrices, x, y, 18, 18, getTexture(darkSlot, BundleTooltipComponent.TEXTURE, isDarkMode), buttonLeft, buttonTop, buttonLeft + buttonWidth, buttonTop + buttonHeight, 0xFFFFFFFF);
+        ScreenDrawing.texturedRect(context, x, y, 18, 18, getTexture(darkSlot, BundleTooltipComponent.TEXTURE, isDarkMode), buttonLeft, buttonTop, buttonLeft + buttonWidth, buttonTop + buttonHeight, 0xFFFFFFFF);
     }
 
-    public static void drawPlayerBackground(MatrixStack matrices, int x, int y, boolean isDarkMode) {
+    public static void drawPlayerBackground(DrawContext context, int x, int y, boolean isDarkMode) {
         int h = 7;
         int d = 25;
 
@@ -45,7 +45,7 @@ public class DrawUtils {
         float buttonTop = h * px;
         float buttonWidth = 51 * px;
         float buttonHeight = 72 * px;
-        ScreenDrawing.texturedRect(matrices, d + x, h + y, 51, 72, getTexture(darkPlayerBackground, InventoryScreen.BACKGROUND_TEXTURE, isDarkMode), buttonLeft, buttonTop, buttonLeft + buttonWidth, buttonTop + buttonHeight, 0xFFFFFFFF);
+        ScreenDrawing.texturedRect(context, x, y, 51, 72, getTexture(darkPlayerBackground, InventoryScreen.BACKGROUND_TEXTURE, isDarkMode), buttonLeft, buttonTop, buttonLeft + buttonWidth, buttonTop + buttonHeight, 0xFFFFFFFF);
     }
 
     public static Text cutString(String text, int length) {

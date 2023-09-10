@@ -15,6 +15,7 @@ public class WListPanelExt<D,W extends WWidget> extends WListPanel<D, W> {
         this.data = data;
         this.supplier = supplier;
         this.configurator = configurator;
+
         scrollBar = new WScrollBarExt(Axis.VERTICAL);
         scrollBar.setMaxValue(data.size());
         scrollBar.setParent(this);

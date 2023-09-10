@@ -1,55 +1,34 @@
 package net.lopymine.specificslots.config;
 
-import java.util.List;
-import java.util.Objects;
+import me.shedaniel.math.Color;
 
 public class SpecificConfig {
-    private final String author;
-    private final List<String> inventory;
-    private final List<String> hotBar;
-    private String name;
-    public SpecificConfig(String author, List<String> inventory, List<String> hotBar) {
-        this.author = author;
-        this.inventory = inventory;
-        this.hotBar = hotBar;
+    private final String WARNING = "PLEASE DON'T EDIT THIS FILE, THE GAME MAY CRASH";
+    private String inventoryConfig;
+    public boolean renderSlotWithItem = false;
+    public boolean enableHighlightWrongSlots = true;
+    public boolean isDarkMode = false;
+    public Integer color = 16711680;
+    public Integer alpha = 30;
+    public Integer depth = 1;
+
+    public SpecificConfig(String config) {
+        if(config == null) throw new NullPointerException("Null config");
+        this.inventoryConfig = config;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getInventoryConfig() {
+        return this.inventoryConfig;
     }
 
-    public List<String> getHotBar() {
-        return hotBar;
+    public void setInventoryConfig(String defaultConfig) {
+        this.inventoryConfig = defaultConfig;
     }
 
-    public List<String> getInventory() {
-        return inventory;
+    public Integer getColor() {
+        Color color = Color.ofTransparent(this.color);
+        Color color_with_alpha = Color.ofRGBA(color.getRed(), color.getGreen(), color.getBlue(), (int) ((float) alpha / 100 * 255));
+        return color_with_alpha.getColor();
     }
 
-    public String getFileName() {
-        return name;
-    }
-
-    public String getName() {
-        if(this.name != null) return name.replaceAll(".json","");
-        return "default";
-    }
-
-    public SpecificConfig setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SpecificConfig config = (SpecificConfig) o;
-        return author.equals(config.author) && inventory.equals(config.inventory) && hotBar.equals(config.hotBar) && Objects.equals(name, config.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(author, inventory, hotBar, name);
-    }
 }

@@ -1,5 +1,6 @@
-package net.lopymine.specificslots.gui.tooltip;
+package net.lopymine.specificslots.gui.tooltip.utils;
 
+import net.lopymine.specificslots.gui.tooltip.WarningTooltipData;
 import net.minecraft.client.item.TooltipData;
 
 import java.util.List;

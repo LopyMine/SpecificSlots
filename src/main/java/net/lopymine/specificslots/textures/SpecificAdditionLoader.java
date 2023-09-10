@@ -12,12 +12,14 @@ import net.minecraft.util.Identifier;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static net.lopymine.specificslots.SpecificSlots.logger;
 
-public class CustomGhostTextureLoader {
+public class SpecificAdditionLoader {
     private final static Set<String> list = new HashSet<>(FabricLoader.getInstance().getAllMods().stream().flatMap(mod -> Stream.of(mod.getMetadata().getId())).toList());
     private static final Gson gson = new GsonBuilder().setLenient().create();
 
@@ -32,6 +34,7 @@ public class CustomGhostTextureLoader {
                 for (String name : namespaces) {
                     if (!list.contains(name) && !name.equals("vanilla")) continue;
                     logger.info("Registering {}", name);
+
                     ResourcePack.ResultConsumer resultConsumer = (identifier, inputStreamInputSupplier) -> {
                         String path = identifier.getPath();
                         if (path.endsWith("items.json")) {
@@ -68,7 +71,7 @@ public class CustomGhostTextureLoader {
                                             String texturePath = "textures/" + texture;
                                             if (texture.replace(".png", "").endsWith("_i")) {
                                                 logger.info("Putting {} items with {} texture from {}", itemsSet, texturePath, name);
-                                                GhostItems.MODS_TEXTURES.put(itemsSet, new Identifier(name, texturePath));
+                                                ShadowItems.MODS_TEXTURES.put(itemsSet, new Identifier(name, texturePath));
                                             } else logger.error("Failed to get texture from {} config, because the texture name along the {} path is missing the '_i' suffix", name, texturePath);
                                         }
                                     }
@@ -90,7 +93,7 @@ public class CustomGhostTextureLoader {
             }
         }
 
-        if (!found) GhostItems.MODS_TEXTURES.clear();
+        if (!found) ShadowItems.MODS_TEXTURES.clear();
 
     }
 }

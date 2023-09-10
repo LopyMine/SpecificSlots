@@ -3,10 +3,9 @@ package net.lopymine.specificslots.gui.tooltip;
 import net.lopymine.specificslots.utils.DrawUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.item.ItemRenderer;
-import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -26,8 +25,9 @@ public class WarningButtonTooltipComponent implements TooltipComponent {
     public WarningButtonTooltipComponent(ItemStack requiredItem, ItemStack providedItem, int index) {
         this.requiredItem = requiredItem;
         this.providedItem = providedItem;
-        TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
         this.text3 = Text.translatable("specific_slots.warning_button_tooltip.text3", index);
+
+        TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
         this.d = textRenderer.getWidth(text1);
         this.l = textRenderer.getWidth(text2);
         this.k = textRenderer.getWidth(text3);
@@ -52,15 +52,20 @@ public class WarningButtonTooltipComponent implements TooltipComponent {
     }
 
     @Override
-    public void drawItems(TextRenderer textRenderer, int x, int y, MatrixStack matrices, ItemRenderer itemRenderer) {
+    public void drawItems(TextRenderer textRenderer, int x, int y, DrawContext context) {
+        MatrixStack matrices = context.getMatrices();
+
         matrices.push();
         matrices.translate(x, y - 1, 300);
 
-        DrawUtils.drawSlot(matrices, d, 0,false);
-        DrawUtils.drawSlot(matrices, d + l + 18, 0,false);
+        DrawUtils.drawSlot(context, d, 0, false);
+        DrawUtils.drawSlot(context, d + l + 18, 0, false);
+
         matrices.translate(0, 0, 50);
-        itemRenderer.renderInGui(matrices, requiredItem, d + 1, 1);
-        itemRenderer.renderInGui(matrices, providedItem, d + l + 18 + 1, 1);
+
+        context.drawItem(requiredItem, d + 1, 1);
+        context.drawItem(providedItem, d + l + 18 + 1, 1);
+
         matrices.pop();
     }
 

@@ -3,11 +3,12 @@ package net.lopymine.specificslots;
 import com.mojang.logging.LogUtils;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
-import net.lopymine.specificslots.config.defalt.DefaultSpecificConfig;
-import net.lopymine.specificslots.config.defalt.DefaultSpecificConfigManager;
+import net.lopymine.specificslots.config.inventory.InventoryConfig;
+import net.lopymine.specificslots.config.inventory.InventoryConfigManager;
 import net.lopymine.specificslots.config.SpecificConfig;
 import net.lopymine.specificslots.config.SpecificConfigManager;
-import net.minecraft.client.gui.hud.InGameHud;
+import net.lopymine.specificslots.textures.ShadowItems;
+import net.lopymine.specificslots.utils.ItemUtils;
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -18,30 +19,34 @@ public class SpecificSlots implements ModInitializer {
     public static final String ID = "specificslots";
     public static final Logger logger = LogUtils.getLogger();
     private static final File DEFAULT_MOD_CONFIG = new File(FabricLoader.getInstance().getConfigDir().toFile(), "specificslots.json5");
-    private static final File DEFAULT_INVENTORY_CONFIG = new File(Path.of(FabricLoader.getInstance().getConfigDir() + "/specific_slots/").toFile(), "default.json");
-    public static SpecificConfig config = SpecificConfigManager.EMPTY;
-    public static DefaultSpecificConfig defaultConfig;
+    public static final File DEFAULT_INVENTORY_CONFIG = new File(Path.of(FabricLoader.getInstance().getConfigDir() + "/specific_slots/").toFile(), "default.json");
+    public static InventoryConfig inventoryConfig = InventoryConfigManager.EMPTY;
+
+    public static SpecificConfig config;
 
     @Override
     public void onInitialize() {
         logger.info("Starting initialize Specific Slots...");
+
         if (!DEFAULT_MOD_CONFIG.exists()) {
-            logger.info("Default config not found, maybe it's first launch with Specific Slots. Starting to create a new config...");
-            SpecificConfig config = SpecificConfigManager.EMPTY;
-            DefaultSpecificConfigManager.setDefaultConfig(new DefaultSpecificConfig(config.getFileName()));
+            logger.info("Default config not found, maybe it's first launch with Specific Slots. Starting to create a new configs...");
+
+            SpecificConfigManager.setConfig(new SpecificConfig(inventoryConfig.getName()), inventoryConfig);
+
             if (!DEFAULT_INVENTORY_CONFIG.exists()) {
-                SpecificConfigManager.writeConfig(config);
+                InventoryConfigManager.writeConfig(inventoryConfig);
             }
         } else {
-            logger.info("Starting to load a default config...");
+            logger.info("Starting to load a default configs...");
         }
 
-        config = DefaultSpecificConfigManager.getInventoryConfig();
-        defaultConfig = DefaultSpecificConfigManager.getDefaultConfig();
+        config = SpecificConfigManager.getConfig();
+        inventoryConfig = SpecificConfigManager.getInventoryConfig();
 
-        //ItemUtils.getMinecraftItems().forEach(item -> {
-        //    if (GhostItems.getTexture(item) == null) System.out.println(item.getTranslationKey());
-        //});
+        ItemUtils.getMinecraftItems().forEach(item -> {
+            if (ShadowItems.getTexture(item) == null)
+                System.out.println("Items." + item.getTranslationKey().substring(item.getTranslationKey().lastIndexOf('.') + 1).toUpperCase());
+        });
     }
 
     public static String ID() {

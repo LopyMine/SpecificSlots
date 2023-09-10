@@ -1,18 +1,16 @@
 package net.lopymine.specificslots.gui.panels;
 
-import io.github.cottonmc.cotton.gui.client.BackgroundPainter;
-import io.github.cottonmc.cotton.gui.widget.*;
+import io.github.cottonmc.cotton.gui.widget.WLabel;
+import io.github.cottonmc.cotton.gui.widget.WPlainPanel;
+import io.github.cottonmc.cotton.gui.widget.WTextField;
+import io.github.cottonmc.cotton.gui.widget.WWidget;
 import io.github.cottonmc.cotton.gui.widget.data.HorizontalAlignment;
 import io.github.cottonmc.cotton.gui.widget.data.VerticalAlignment;
 import net.lopymine.specificslots.gui.widgets.WSimpleItemButton;
 import net.lopymine.specificslots.gui.widgets.WSlot;
 import net.lopymine.specificslots.gui.widgets.WSwitcher;
-import net.lopymine.specificslots.textures.GhostItems;
-import net.lopymine.specificslots.utils.ItemUtils;
-import net.minecraft.client.gui.widget.Widget;
-import net.minecraft.client.util.math.MatrixStack;
+import net.lopymine.specificslots.textures.ShadowItems;
 import net.minecraft.item.Item;
-import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 
 import java.util.ArrayList;
@@ -44,7 +42,7 @@ public class WItemsPanel extends WPlainPanel {
 
         this.subPanelWidth = panelWidth;
         this.subPanelHeight = panelHeight - 58;
-        //
+
         this.itemsCountY = subPanelHeight / 18;
         int k = 18 * itemsCountY;
         int d = subPanelHeight - k;
@@ -60,75 +58,64 @@ public class WItemsPanel extends WPlainPanel {
         this.pageCount = items.size() / maxItemsPerPage;
 
         this.label.setText(Text.of("0/" + pageCount))
-            .setVerticalAlignment(VerticalAlignment.CENTER)
-            .setHorizontalAlignment(HorizontalAlignment.CENTER)
-            .setColor(0xFFFFFFFF);
+                .setVerticalAlignment(VerticalAlignment.CENTER)
+                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                .setColor(0xFFFFFFFF);
 
-        createWidgets();
-        createPage();
+        this.createWidgets();
+        this.createPage();
     }
 
     private void createWidgets() {
         int panel = panelWidth / 2;
 
-        WTextField searchField = new WTextField(Text.translatable("specific_slots.search")) {
-            @Override
-            public boolean shouldRenderInDarkMode() {
-                return WItemsPanel.this.shouldRenderInDarkMode();
-            }
-        };
-        searchField.setChangedListener(s -> {
-            clearItems();
-            createItemsPanel(getSearch(s,items));
-        });
+        WTextField searchField = new WTextField(Text.translatable("specific_slots.search"))
+                .setChangedListener(s -> {
+                    clearItems();
+                    createItemsPanel(getSearch(s, items));
+                });
+
         this.add(searchField, (panelWidth / 2) - (panel / 2), 6, panel, 20);
 
-        WSwitcher switcherRight = new WSwitcher(WSwitcher.Type.RIGHT) {
-            @Override
-            public boolean shouldRenderInDarkMode() {
-                return WItemsPanel.this.shouldRenderInDarkMode();
-            }
-        };
-        switcherRight.setOnClick(this::nextPage);
+        WSwitcher switcherRight = new WSwitcher(WSwitcher.Type.RIGHT)
+                .setOnClick(this::nextPage);
+
         this.add(switcherRight, searchField.getWidth() + searchField.getX() + 5, 5);
 
-        WSwitcher switcherLeft = new WSwitcher(WSwitcher.Type.LEFT) {
-            @Override
-            public boolean shouldRenderInDarkMode() {
-                return WItemsPanel.this.shouldRenderInDarkMode();
-            }
-        };
+        WSwitcher switcherLeft = new WSwitcher(WSwitcher.Type.LEFT)
+                .setOnClick(this::backPage);
 
-        switcherLeft.setOnClick(this::backPage);
         this.add(switcherLeft, searchField.getX() - 5 - WSwitcher.switcherWidth, 5);
 
         this.add(label, 0, 28, panelWidth, 20);
     }
 
     private void createPage() {
-        this.label.setText(Text.of(pageIndex + "/" + pageCount));
+        label.setText(Text.of(pageIndex + "/" + pageCount));
         int startIndex = maxItemsPerPage * pageIndex;
 
         int endIndex = startIndex + maxItemsPerPage;
         if (endIndex > items.size()) endIndex = items.size();
+
         this.clearItems();
         this.createItemsPanel(items.subList(startIndex, endIndex));
     }
 
     private void backPage() {
-        pageIndex--;
+        this.pageIndex--;
         if (pageIndex == -1) pageIndex = pageCount;
         this.createPage();
     }
 
     private void nextPage() {
-        pageIndex++;
+        this.pageIndex++;
         if (pageIndex > pageCount) pageIndex = 0;
         this.createPage();
     }
 
     private void clearItems() {
         List<WWidget> widgets = new ArrayList<>(children);
+
         for (WWidget widget : widgets) {
             if (widget instanceof WSimpleItemButton) {
                 this.remove(widget);
@@ -142,21 +129,24 @@ public class WItemsPanel extends WPlainPanel {
 
         for (Item item : list) {
             WSimpleItemButton itemButton = new WSimpleItemButton(item).setOnClick(() -> {
-                Set<WSlot> select = new HashSet<>(playerPanel.getSelectSlots());
+                Set<WSlot> select = new HashSet<>(playerPanel.getSelectedSlots());
 
                 if (!select.isEmpty()) {
                     for (WSlot slot : select) {
-                        if (slot.isArmor) continue;
-                        slot.setTexture(GhostItems.getTexture(item));
-                        slot.setItem(item);
-                        slot.setToggle(false);
-                        playerPanel.removeSelect(slot);
+                        if (slot.isArmor()) continue;
+
+                        slot.setTexture(ShadowItems.getTexture(item))
+                                .setItem(item)
+                                .setToggle(false);
+
+                        playerPanel.removeSelectedSlot(slot);
                     }
                 }
             });
 
             this.add(itemButton, offsetX + (itemsX * 18), offsetY + (itemsY * 18) + 46);
-            if(this.getHost() != null) itemButton.validate(this.getHost());
+
+            if (this.getHost() != null) itemButton.validate(this.getHost());
             itemsX++;
 
             if (itemsX >= itemsCountX) {
@@ -170,7 +160,7 @@ public class WItemsPanel extends WPlainPanel {
         List<Item> itemSearch = new ArrayList<>();
 
         if (text.isEmpty()) {
-            if(items.size() > maxItemsPerPage) items = items.subList(0,maxItemsPerPage);
+            if (items.size() > maxItemsPerPage) items = items.subList(0, maxItemsPerPage);
             return items;
         }
 
@@ -180,7 +170,7 @@ public class WItemsPanel extends WPlainPanel {
             }
         }
 
-        if(itemSearch.size() > maxItemsPerPage) itemSearch = itemSearch.subList(0,maxItemsPerPage);
+        if (itemSearch.size() > maxItemsPerPage) itemSearch = itemSearch.subList(0, maxItemsPerPage);
         return itemSearch;
     }
 
@@ -200,8 +190,4 @@ public class WItemsPanel extends WPlainPanel {
         return panelHeight;
     }
 
-    @Override
-    public boolean canFocus() {
-        return true;
-    }
 }

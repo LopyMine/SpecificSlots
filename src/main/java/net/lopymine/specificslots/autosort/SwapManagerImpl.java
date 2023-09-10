@@ -5,8 +5,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.SlotActionType;
 
-import static net.lopymine.specificslots.SpecificSlots.logger;
-
 public class SwapManagerImpl implements ISwapManager {
     private final ClientPlayerInteractionManager interactionManager;
     private final ScreenHandler handler;
@@ -29,7 +27,14 @@ public class SwapManagerImpl implements ISwapManager {
     public void click(int index) {
         if (interactionManager == null) return;
         if (player == null) return;
+        System.out.println("Click to " + index);
         interactionManager.clickSlot(handler.syncId, index + startIndex, 0, SlotActionType.PICKUP, player);
+    }
+
+    public void pickupAll(int index) {
+        if (interactionManager == null) return;
+        if (player == null) return;
+        interactionManager.clickSlot(handler.syncId, index + startIndex, 0, SlotActionType.PICKUP_ALL, player);
     }
 
     public void setStartIndex(int startIndex) {

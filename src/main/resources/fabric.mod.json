@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "specificslots",
+  "id": "specific-slots",
   "version": "${version}",
   "name": "Specific Slots",
   "description": "Simple configuration of your inventory for items!",

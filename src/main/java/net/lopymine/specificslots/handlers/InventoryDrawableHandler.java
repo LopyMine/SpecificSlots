@@ -1,6 +1,5 @@
 package net.lopymine.specificslots.handlers;
 
-import net.lopymine.specificslots.gui.widgets.vanilla.AutoSortWidget;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;

@@ -8,15 +8,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class GhostItems {
+public class ShadowItems {
     public static final Identifier ACACIA_DOOR = new Identifier(SpecificSlots.ID(), "textures/items/acacia_door_i.png");
     public static final Identifier ACACIA_SAPLING = new Identifier(SpecificSlots.ID(), "textures/items/acacia_sapling_i.png");
     public static final Identifier ACTIVATOR_RAIL = new Identifier(SpecificSlots.ID(), "textures/items/activator_rail_i.png");
     public static final Identifier ALLIUM = new Identifier(SpecificSlots.ID(), "textures/items/allium_i.png");
     public static final Identifier AMETHYST_CLUSTER = new Identifier(SpecificSlots.ID(), "textures/items/amethyst_cluster_i.png");
     public static final Identifier AMETHYST_SHARD = new Identifier(SpecificSlots.ID(), "textures/items/amethyst_shard_i.png");
+    public static final Identifier ANGLER_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/angler_pottery_sherd_i.png");
     public static final Identifier APPLE = new Identifier(SpecificSlots.ID(), "textures/items/apple_i.png");
+    public static final Identifier ARCHER_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/archer_pottery_sherd_i.png");
     public static final Identifier ARMOR_STAND = new Identifier(SpecificSlots.ID(), "textures/items/armor_stand_i.png");
+    public static final Identifier ARMS_UP_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/arms_up_pottery_sherd_i.png");
     public static final Identifier ARROW = new Identifier(SpecificSlots.ID(), "textures/items/arrow_i.png");
     public static final Identifier AXE = new Identifier(SpecificSlots.ID(), "textures/items/axe_i.png");
     public static final Identifier AXOLOTL_BUCKET = new Identifier(SpecificSlots.ID(), "textures/items/axolotl_bucket_i.png");
@@ -34,6 +37,7 @@ public class GhostItems {
     public static final Identifier BIRCH_DOOR = new Identifier(SpecificSlots.ID(), "textures/items/birch_door_i.png");
     public static final Identifier BIRCH_SAPLING = new Identifier(SpecificSlots.ID(), "textures/items/birch_sapling_i.png");
     public static final Identifier BLACK_DYE = new Identifier(SpecificSlots.ID(), "textures/items/black_dye_i.png");
+    public static final Identifier BLADE_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/blade_pottery_sherd_i.png");
     public static final Identifier BLAZE_POWDER = new Identifier(SpecificSlots.ID(), "textures/items/blaze_powder_i.png");
     public static final Identifier BLAZE_ROD = new Identifier(SpecificSlots.ID(), "textures/items/blaze_rod_i.png");
     public static final Identifier BLUE_DYE = new Identifier(SpecificSlots.ID(), "textures/items/blue_dye_i.png");
@@ -48,15 +52,18 @@ public class GhostItems {
     public static final Identifier BRAIN_CORAL_FAN = new Identifier(SpecificSlots.ID(), "textures/items/brain_coral_fan_i.png");
     public static final Identifier BRAIN_CORAL = new Identifier(SpecificSlots.ID(), "textures/items/brain_coral_i.png");
     public static final Identifier BREAD = new Identifier(SpecificSlots.ID(), "textures/items/bread_i.png");
+    public static final Identifier BREWER_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/brewer_pottery_sherd_i.png");
     public static final Identifier BREWING_STAND = new Identifier(SpecificSlots.ID(), "textures/items/brewing_stand_i.png");
     public static final Identifier BROKEN_ELYTRA = new Identifier(SpecificSlots.ID(), "textures/items/broken_elytra_i.png");
     public static final Identifier BROWN_DYE = new Identifier(SpecificSlots.ID(), "textures/items/brown_dye_i.png");
     public static final Identifier BROWN_MUSHROOM = new Identifier(SpecificSlots.ID(), "textures/items/brown_mushroom_i.png");
+    public static final Identifier BRUSH = new Identifier(SpecificSlots.ID(), "textures/items/brush_i.png");
     public static final Identifier BUBBLE_CORAL_FAN = new Identifier(SpecificSlots.ID(), "textures/items/bubble_coral_fan_i.png");
     public static final Identifier BUBBLE_CORAL = new Identifier(SpecificSlots.ID(), "textures/items/bubble_coral_i.png");
     public static final Identifier BUCKET = new Identifier(SpecificSlots.ID(), "textures/items/bucket_i.png");
     public static final Identifier BUNDLE_FILLED = new Identifier(SpecificSlots.ID(), "textures/items/bundle_filled_i.png");
     public static final Identifier BUNDLE = new Identifier(SpecificSlots.ID(), "textures/items/bundle_i.png");
+    public static final Identifier BURN_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/burn_pottery_sherd_i.png");
     public static final Identifier CAKE = new Identifier(SpecificSlots.ID(), "textures/items/cake_i.png");
     public static final Identifier CAMPFIRE = new Identifier(SpecificSlots.ID(), "textures/items/campfire_i.png");
     public static final Identifier CANDLE = new Identifier(SpecificSlots.ID(), "textures/items/candle_i.png");
@@ -100,6 +107,7 @@ public class GhostItems {
     public static final Identifier CROSSBOW_STANDBY = new Identifier(SpecificSlots.ID(), "textures/items/crossbow_standby_i.png");
     public static final Identifier CYAN_DYE = new Identifier(SpecificSlots.ID(), "textures/items/cyan_dye_i.png");
     public static final Identifier DANDELION = new Identifier(SpecificSlots.ID(), "textures/items/dandelion_i.png");
+    public static final Identifier DANGER_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/danger_pottery_sherd_i.png");
     public static final Identifier DARK_OAK_DOOR = new Identifier(SpecificSlots.ID(), "textures/items/dark_oak_door_i.png");
     public static final Identifier DARK_OAK_SAPLING = new Identifier(SpecificSlots.ID(), "textures/items/dark_oak_sapling_i.png");
     public static final Identifier DEAD_BUSH = new Identifier(SpecificSlots.ID(), "textures/items/dead_bush_i.png");
@@ -119,6 +127,7 @@ public class GhostItems {
     public static final Identifier ENDER_PEARL = new Identifier(SpecificSlots.ID(), "textures/items/ender_pearl_i.png");
     public static final Identifier END_CRYSTAL = new Identifier(SpecificSlots.ID(), "textures/items/end_crystal_i.png");
     public static final Identifier EXPERIENCE_BOTTLE = new Identifier(SpecificSlots.ID(), "textures/items/experience_bottle_i.png");
+    public static final Identifier EXPLORER_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/explorer_pottery_sherd_i.png");
     public static final Identifier EYE_ARMOR_TRIM_SMITHING_TEMPLATE = new Identifier(SpecificSlots.ID(), "textures/items/eye_armor_trim_smithing_template_i.png");
     public static final Identifier FEATHER = new Identifier(SpecificSlots.ID(), "textures/items/feather_i.png");
     public static final Identifier FERMENTED_SPIDER_EYE = new Identifier(SpecificSlots.ID(), "textures/items/fermented_spider_eye_i.png");
@@ -133,6 +142,7 @@ public class GhostItems {
     public static final Identifier FLINT_AND_STEEL = new Identifier(SpecificSlots.ID(), "textures/items/flint_and_steel_i.png");
     public static final Identifier FLINT = new Identifier(SpecificSlots.ID(), "textures/items/flint_i.png");
     public static final Identifier FLOWER_POT = new Identifier(SpecificSlots.ID(), "textures/items/flower_pot_i.png");
+    public static final Identifier FRIEND_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/friend_pottery_sherd_i.png");
     public static final Identifier FROGSPAWN = new Identifier(SpecificSlots.ID(), "textures/items/frogspawn_i.png");
     public static final Identifier FURNACE_MINECART = new Identifier(SpecificSlots.ID(), "textures/items/furnace_minecart_i.png");
     public static final Identifier GHAST_TEAR = new Identifier(SpecificSlots.ID(), "textures/items/ghast_tear_i.png");
@@ -151,7 +161,9 @@ public class GhostItems {
     public static final Identifier GUNPOWDER = new Identifier(SpecificSlots.ID(), "textures/items/gunpowder_i.png");
     public static final Identifier HANGING_ROOTS = new Identifier(SpecificSlots.ID(), "textures/items/hanging_roots_i.png");
     public static final Identifier HANGING_SIGN = new Identifier(SpecificSlots.ID(), "textures/items/hanging_sign_i.png");
+    public static final Identifier HEARTBREAK_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/heartbreak_pottery_sherd_i.png");
     public static final Identifier HEART_OF_THE_SEA = new Identifier(SpecificSlots.ID(), "textures/items/heart_of_the_sea_i.png");
+    public static final Identifier HEART_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/heart_pottery_sherd_i.png");
     public static final Identifier HELMET = new Identifier(SpecificSlots.ID(), "textures/items/helmet_i.png");
     public static final Identifier HOE = new Identifier(SpecificSlots.ID(), "textures/items/hoe_i.png");
     public static final Identifier HONEYCOMB = new Identifier(SpecificSlots.ID(), "textures/items/honeycomb_i.png");
@@ -161,6 +173,8 @@ public class GhostItems {
     public static final Identifier HORN_CORAL_FAN = new Identifier(SpecificSlots.ID(), "textures/items/horn_coral_fan_i.png");
     public static final Identifier HORN_CORAL = new Identifier(SpecificSlots.ID(), "textures/items/horn_coral_i.png");
     public static final Identifier HORSE_ARMOR = new Identifier(SpecificSlots.ID(), "textures/items/horse_armor_i.png");
+    public static final Identifier HOST_ARMOR_TRIM_SMITHING_TEMPLATE = new Identifier(SpecificSlots.ID(), "textures/items/host_armor_trim_smithing_template_i.png");
+    public static final Identifier HOWL_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/howl_pottery_sherd_i.png");
     public static final Identifier INGOT = new Identifier(SpecificSlots.ID(), "textures/items/ingot_i.png");
     public static final Identifier INK_SAC = new Identifier(SpecificSlots.ID(), "textures/items/ink_sac_i.png");
     public static final Identifier IRON_BARS = new Identifier(SpecificSlots.ID(), "textures/items/iron_bars_i.png");
@@ -199,6 +213,8 @@ public class GhostItems {
     public static final Identifier MELON_SEEDS = new Identifier(SpecificSlots.ID(), "textures/items/melon_seeds_i.png");
     public static final Identifier MELON_SLICE = new Identifier(SpecificSlots.ID(), "textures/items/melon_slice_i.png");
     public static final Identifier MINECART = new Identifier(SpecificSlots.ID(), "textures/items/minecart_i.png");
+    public static final Identifier MINER_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/miner_pottery_sherd_i.png");
+    public static final Identifier MOURNER_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/mourner_pottery_sherd_i.png");
     public static final Identifier MUSHROOM_STEW = new Identifier(SpecificSlots.ID(), "textures/items/mushroom_stew_i.png");
     public static final Identifier MUSIC_DISC_11 = new Identifier(SpecificSlots.ID(), "textures/items/music_disc_11_i.png");
     public static final Identifier MUSIC_DISC = new Identifier(SpecificSlots.ID(), "textures/items/music_disc_i.png");
@@ -229,6 +245,7 @@ public class GhostItems {
     public static final Identifier PINK_TULIP = new Identifier(SpecificSlots.ID(), "textures/items/pink_tulip_i.png");
     public static final Identifier PITCHER_PLANT = new Identifier(SpecificSlots.ID(), "textures/items/pitcher_plant_i.png");
     public static final Identifier PITCHER_ROD = new Identifier(SpecificSlots.ID(), "textures/items/pitcher_rod_i.png");
+    public static final Identifier PLENTY_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/plenty_pottery_sherd_i.png");
     public static final Identifier POINTED_DRIPSTONE = new Identifier(SpecificSlots.ID(), "textures/items/pointed_dripstone_i.png");
     public static final Identifier POISONOUS_POTATO = new Identifier(SpecificSlots.ID(), "textures/items/poisonous_potato_i.png");
     public static final Identifier POPPED_CHORUS_FRUIT = new Identifier(SpecificSlots.ID(), "textures/items/popped_chorus_fruit_i.png");
@@ -240,6 +257,7 @@ public class GhostItems {
     public static final Identifier POWERED_RAIL = new Identifier(SpecificSlots.ID(), "textures/items/powered_rail_i.png");
     public static final Identifier PRISMARINE_CRYSTALS = new Identifier(SpecificSlots.ID(), "textures/items/prismarine_crystals_i.png");
     public static final Identifier PRISMARINE_SHARD = new Identifier(SpecificSlots.ID(), "textures/items/prismarine_shard_i.png");
+    public static final Identifier PRIZE_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/prize_pottery_sherd_i.png");
     public static final Identifier PUFFERFISH_BUCKET = new Identifier(SpecificSlots.ID(), "textures/items/pufferfish_bucket_i.png");
     public static final Identifier PUFFERFISH = new Identifier(SpecificSlots.ID(), "textures/items/pufferfish_i.png");
     public static final Identifier PUMPKIN_PIE = new Identifier(SpecificSlots.ID(), "textures/items/pumpkin_pie_i.png");
@@ -249,6 +267,7 @@ public class GhostItems {
     public static final Identifier RABBIT_HIDE = new Identifier(SpecificSlots.ID(), "textures/items/rabbit_hide_i.png");
     public static final Identifier RABBIT_STEW = new Identifier(SpecificSlots.ID(), "textures/items/rabbit_stew_i.png");
     public static final Identifier RAIL = new Identifier(SpecificSlots.ID(), "textures/items/rail_i.png");
+    public static final Identifier RAISER_ARMOR_TRIM_SMITHING_TEMPLATE = new Identifier(SpecificSlots.ID(), "textures/items/raiser_armor_trim_smithing_template_i.png");
     public static final Identifier RAW_COPPER = new Identifier(SpecificSlots.ID(), "textures/items/raw_copper_i.png");
     public static final Identifier RAW_GOLD = new Identifier(SpecificSlots.ID(), "textures/items/raw_gold_i.png");
     public static final Identifier RAW_IRON = new Identifier(SpecificSlots.ID(), "textures/items/raw_iron_i.png");
@@ -270,14 +289,19 @@ public class GhostItems {
     public static final Identifier SEAGRASS = new Identifier(SpecificSlots.ID(), "textures/items/seagrass_i.png");
     public static final Identifier SEA_PICKLE = new Identifier(SpecificSlots.ID(), "textures/items/sea_pickle_i.png");
     public static final Identifier SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE = new Identifier(SpecificSlots.ID(), "textures/items/sentry_armor_trim_smithing_template_i.png");
+    public static final Identifier SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE = new Identifier(SpecificSlots.ID(), "textures/items/shaper_armor_trim_smithing_template_i.png");
+    public static final Identifier SHEAF_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/sheaf_pottery_sherd_i.png");
     public static final Identifier SHEARS = new Identifier(SpecificSlots.ID(), "textures/items/shears_i.png");
+    public static final Identifier SHELTER_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/shelter_pottery_sherd_i.png");
     public static final Identifier SHOVEL = new Identifier(SpecificSlots.ID(), "textures/items/shovel_i.png");
     public static final Identifier SHULKER_SHELL = new Identifier(SpecificSlots.ID(), "textures/items/shulker_shell_i.png");
     public static final Identifier SIGN = new Identifier(SpecificSlots.ID(), "textures/items/sign_i.png");
     public static final Identifier SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE = new Identifier(SpecificSlots.ID(), "textures/items/silence_armor_trim_smithing_template_i.png");
+    public static final Identifier SKULL_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/skull_pottery_sherd_i.png");
     public static final Identifier SLIME_BALL = new Identifier(SpecificSlots.ID(), "textures/items/slime_ball_i.png");
     public static final Identifier SMALL_AMETHYST_BUD = new Identifier(SpecificSlots.ID(), "textures/items/small_amethyst_bud_i.png");
     public static final Identifier SNIFFER_EGG = new Identifier(SpecificSlots.ID(), "textures/items/sniffer_egg_i.png");
+    public static final Identifier SNORT_POTTERY_SHERD = new Identifier(SpecificSlots.ID(), "textures/items/snort_pottery_sherd_i.png");
     public static final Identifier SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE = new Identifier(SpecificSlots.ID(), "textures/items/snout_armor_trim_smithing_template_i.png");
     public static final Identifier SNOWBALL = new Identifier(SpecificSlots.ID(), "textures/items/snowball_i.png");
     public static final Identifier SPAWN_EGG = new Identifier(SpecificSlots.ID(), "textures/items/spawn_egg_i.png");
@@ -299,6 +323,7 @@ public class GhostItems {
     public static final Identifier SWORD = new Identifier(SpecificSlots.ID(), "textures/items/sword_i.png");
     public static final Identifier TADPOLE_BUCKET = new Identifier(SpecificSlots.ID(), "textures/items/tadpole_bucket_i.png");
     public static final Identifier TALL_GRASS = new Identifier(SpecificSlots.ID(), "textures/items/tall_grass_i.png");
+    public static final Identifier TIDE_ARMOR_TRIM_SMITHING_TEMPLATE = new Identifier(SpecificSlots.ID(), "textures/items/tide_armor_trim_smithing_template_i.png");
     public static final Identifier TIPPED_ARROW = new Identifier(SpecificSlots.ID(), "textures/items/tipped_arrow_i.png");
     public static final Identifier TNT_MINECART = new Identifier(SpecificSlots.ID(), "textures/items/tnt_minecart_i.png");
     public static final Identifier TORCHFLOWER_SEEDS = new Identifier(SpecificSlots.ID(), "textures/items/torchflower_seeds_i.png");
@@ -321,6 +346,7 @@ public class GhostItems {
     public static final Identifier WARPED_FUNGUS_ON_A_STICK = new Identifier(SpecificSlots.ID(), "textures/items/warped_fungus_on_a_stick_i.png");
     public static final Identifier WARPED_ROOTS = new Identifier(SpecificSlots.ID(), "textures/items/warped_roots_i.png");
     public static final Identifier WATER_BUCKET = new Identifier(SpecificSlots.ID(), "textures/items/water_bucket_i.png");
+    public static final Identifier WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE = new Identifier(SpecificSlots.ID(), "textures/items/wayfinder_armor_trim_smithing_template_i.png");
     public static final Identifier WEEPING_VINES = new Identifier(SpecificSlots.ID(), "textures/items/weeping_vines_i.png");
     public static final Identifier WHEAT = new Identifier(SpecificSlots.ID(), "textures/items/wheat_i.png");
     public static final Identifier WHEAT_SEEDS = new Identifier(SpecificSlots.ID(), "textures/items/wheat_seeds_i.png");
@@ -331,7 +357,7 @@ public class GhostItems {
     public static final Identifier WRITABLE_BOOK = new Identifier(SpecificSlots.ID(), "textures/items/writable_book_i.png");
     public static final Identifier WRITTEN_BOOK = new Identifier(SpecificSlots.ID(), "textures/items/written_book_i.png");
     public static final Identifier YELLOW_DYE = new Identifier(SpecificSlots.ID(), "textures/items/yellow_dye_i.png");
-    public static final Identifier BRUSH = new Identifier(SpecificSlots.ID(), "textures/items/brush_i.png");
+    public static final Identifier TORCHFLOWER = new Identifier(SpecificSlots.ID(), "textures/items/torchflower_i.png");
     private static final Map<HashSet<Item>, Identifier> ITEM_TEXTURES = new HashMap<>();
     public static final Map<HashSet<Item>, Identifier> MODS_TEXTURES = new HashMap<>();
     static {
@@ -570,7 +596,8 @@ public class GhostItems {
                 Items.MUSIC_DISC_STAL,
                 Items.MUSIC_DISC_STRAD,
                 Items.MUSIC_DISC_WAIT,
-                Items.MUSIC_DISC_WARD
+                Items.MUSIC_DISC_WARD,
+                Items.MUSIC_DISC_RELIC
         )), MUSIC_DISC);
 
         ITEM_TEXTURES.put(new HashSet<>(Arrays.asList(
@@ -734,15 +761,12 @@ public class GhostItems {
         )), STICK);
 
         ITEM_TEXTURES.put(new HashSet<>(List.of(
-                Items.WATER_BUCKET,
-                Items.MILK_BUCKET
-        )), BUCKET);
-
-        ITEM_TEXTURES.put(new HashSet<>(List.of(
                 Items.CHICKEN,
                 Items.COOKED_CHICKEN
         )), CHICKEN);
 
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.WATER_BUCKET)), WATER_BUCKET);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.MILK_BUCKET)), BUCKET);
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.TADPOLE_BUCKET)), TADPOLE_BUCKET);
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.TALL_GRASS)), TALL_GRASS);
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SCULK_VEIN)), SCULK_VEIN);
@@ -1019,12 +1043,43 @@ public class GhostItems {
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE)), SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE);
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.RIB_ARMOR_TRIM_SMITHING_TEMPLATE)), RIB_ARMOR_TRIM_SMITHING_TEMPLATE);
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE)), SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE);
-        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SNIFFER_SPAWN_EGG)), SNIFFER_EGG);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE)), SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE)), TIDE_ARMOR_TRIM_SMITHING_TEMPLATE);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE)), WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE)), SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.RAISER_ARMOR_TRIM_SMITHING_TEMPLATE)), RAISER_ARMOR_TRIM_SMITHING_TEMPLATE);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.HOST_ARMOR_TRIM_SMITHING_TEMPLATE)), HOST_ARMOR_TRIM_SMITHING_TEMPLATE);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SNIFFER_EGG)), SNIFFER_EGG);
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.PINK_PETALS)), PINK_PETALS);
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.CHERRY_DOOR)), CHERRY_DOOR);
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.BAMBOO_DOOR)), BAMBOO_DOOR);
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.CHERRY_SAPLING)), CHERRY_SAPPLNG);
         ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.BRUSH)), BRUSH);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.TORCHFLOWER_SEEDS)), TORCHFLOWER_SEEDS);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.TORCHFLOWER)), TORCHFLOWER);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.PITCHER_PLANT)), PITCHER_PLANT);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.PITCHER_POD)), PITCHER_ROD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.ANGLER_POTTERY_SHERD)), ANGLER_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.ARCHER_POTTERY_SHERD)), ARCHER_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.ARMS_UP_POTTERY_SHERD)), ARMS_UP_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.BLADE_POTTERY_SHERD)), BLADE_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.BREWER_POTTERY_SHERD)), BREWER_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.BURN_POTTERY_SHERD)), BURN_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.DANGER_POTTERY_SHERD)), DANGER_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.EXPLORER_POTTERY_SHERD)), EXPLORER_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.FRIEND_POTTERY_SHERD)), FRIEND_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.HEART_POTTERY_SHERD)), HEART_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.HEARTBREAK_POTTERY_SHERD)), HEARTBREAK_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.HOWL_POTTERY_SHERD)), HOWL_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.MINER_POTTERY_SHERD)), MINER_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.MOURNER_POTTERY_SHERD)), MOURNER_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.PLENTY_POTTERY_SHERD)), PLENTY_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.PRIZE_POTTERY_SHERD)), PRIZE_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SHEAF_POTTERY_SHERD)), SHEAF_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SHELTER_POTTERY_SHERD)), SHELTER_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SKULL_POTTERY_SHERD)), SKULL_POTTERY_SHERD);
+        ITEM_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SNORT_POTTERY_SHERD)), SNORT_POTTERY_SHERD);
+
     }
 
     @Nullable
@@ -1037,13 +1092,14 @@ public class GhostItems {
             }
         }
 
+        if (item == Items.AIR) return null;
         for (HashSet<Item> itemList : ITEM_TEXTURES.keySet()) {
             if (itemList.contains(item)) {
                 return ITEM_TEXTURES.get(itemList);
             }
         }
 
-        return GhostBlocks.getTexture(item);
+        return ShadowBlocks.getTexture(item);
     }
 
 }

@@ -1,11 +1,9 @@
-package net.lopymine.specificslots.gui.tooltip;
+package net.lopymine.specificslots.gui.tooltip.utils;
 
-import io.github.cottonmc.cotton.gui.widget.TooltipBuilder;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.item.ItemRenderer;
-import net.minecraft.client.util.math.MatrixStack;
 import org.joml.Matrix4f;
 
 import java.util.List;
@@ -47,10 +45,10 @@ public class TooltipComponents implements TooltipComponent {
     }
 
     @Override
-    public void drawItems(TextRenderer textRenderer, int x, int y, MatrixStack matrices, ItemRenderer itemRenderer) {
+    public void drawItems(TextRenderer textRenderer, int x, int y, DrawContext context) {
         int componentY = 0;
         for (TooltipComponent component : components) {
-            component.drawItems(textRenderer,x,y + componentY,matrices,itemRenderer);
+            component.drawItems(textRenderer, x, y + componentY, context);
             componentY += component.getHeight() + 1;
         }
     }

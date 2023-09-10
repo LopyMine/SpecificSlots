@@ -1,28 +1,27 @@
 package net.lopymine.specificslots.gui.widgets;
 
-import io.github.cottonmc.cotton.gui.GuiDescription;
-import io.github.cottonmc.cotton.gui.widget.*;
+import io.github.cottonmc.cotton.gui.widget.TooltipBuilder;
+import io.github.cottonmc.cotton.gui.widget.WItem;
+import io.github.cottonmc.cotton.gui.widget.WPanel;
+import io.github.cottonmc.cotton.gui.widget.WWidget;
 import io.github.cottonmc.cotton.gui.widget.data.InputResult;
-import net.lopymine.specificslots.textures.GhostItems;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.lopymine.specificslots.textures.ShadowItems;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.sound.PositionedSoundInstance;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.Nullable;
 
-import static net.lopymine.specificslots.SpecificSlots.logger;
-
 public class WSimpleItemButton extends WWidget {
-
-    private Item item = Items.AIR;
-    private final WItem icon;
     private boolean dragging = false;
+    private final Item item;
+    private final WItem icon;
     private int dragX = 0;
     private int dragY = 0;
     @Nullable
@@ -33,17 +32,19 @@ public class WSimpleItemButton extends WWidget {
         this.icon = new WItem(new ItemStack(item));
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
-    public void paint(MatrixStack matrices, int x, int y, int mouseX, int mouseY) {
-        this.icon.paint(matrices, x, y, mouseX, mouseY);
-        if (dragging) {
-            this.icon.paint(matrices, this.dragX + x, this.dragY + y, mouseX, mouseY);
-        }
-        if (isHovered() || isFocused()) {
-            HandledScreen.drawSlotHighlight(matrices, x + 1, y + 1, 0);
-        }
+    public void paint(DrawContext context, int x, int y, int mouseX, int mouseY) {
+        icon.paint(context, x, y, mouseX, mouseY);
+
+        if (dragging)
+            icon.paint(context, this.dragX + x, this.dragY + y, mouseX, mouseY);
+
+        if (isHovered() || isFocused())
+            HandledScreen.drawSlotHighlight(context, x + 1, y + 1, 0);
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
     public InputResult onClick(int x, int y, int button) {
         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
@@ -51,18 +52,13 @@ public class WSimpleItemButton extends WWidget {
         return InputResult.PROCESSED;
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
     public void addTooltip(TooltipBuilder tooltip) {
-        if (item != null) {
-            tooltip.add(Text.of(item.getName().getString()));
-        }
+        tooltip.add(Text.of(item.getName().getString()));
     }
 
-    public WSimpleItemButton setOnClick(@Nullable Runnable onClick) {
-        this.onClick = onClick;
-        return this;
-    }
-
+    @Environment(EnvType.CLIENT)
     @Override
     public InputResult onMouseDrag(int x, int y, int button, double deltaX, double deltaY) {
         this.dragX = x;
@@ -71,10 +67,11 @@ public class WSimpleItemButton extends WWidget {
         return InputResult.PROCESSED;
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
     public InputResult onMouseUp(int x, int y, int button) {
-        if(!dragging) return super.onMouseUp(x, y, button);
-        this.dragging = false;
+        if (!dragging) return super.onMouseUp(x, y, button);
+        dragging = false;
 
         if (host == null) return InputResult.IGNORED;
 
@@ -87,11 +84,18 @@ public class WSimpleItemButton extends WWidget {
         if (hit == null) return InputResult.IGNORED;
 
         if (hit instanceof WSlot slot) {
-            slot.setTexture(GhostItems.getTexture(this.item));
-            slot.setItem(this.item);
+            slot.setTexture(ShadowItems.getTexture(this.item))
+                    .setItem(this.item);
+
             return InputResult.PROCESSED;
         }
 
         return InputResult.IGNORED;
     }
+
+    public WSimpleItemButton setOnClick(@Nullable Runnable onClick) {
+        this.onClick = onClick;
+        return this;
+    }
+
 }

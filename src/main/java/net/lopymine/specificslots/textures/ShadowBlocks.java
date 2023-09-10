@@ -8,8 +8,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class GhostBlocks {
+public class ShadowBlocks {
     public static final Identifier ANVIL = new Identifier(SpecificSlots.ID(), "textures/blocks/anvil_i.png");
+    public static final Identifier BANNER = new Identifier(SpecificSlots.ID(), "textures/blocks/banner_i.png");
     public static final Identifier BEACON = new Identifier(SpecificSlots.ID(), "textures/blocks/beacon_i.png");
     public static final Identifier BED = new Identifier(SpecificSlots.ID(), "textures/blocks/bed_i.png");
     public static final Identifier BLOCK = new Identifier(SpecificSlots.ID(), "textures/blocks/block_i.png");
@@ -22,11 +23,13 @@ public class GhostBlocks {
     public static final Identifier DECORATED_POT = new Identifier(SpecificSlots.ID(), "textures/blocks/decorated_pot_i.png");
     public static final Identifier DRAGON_EGG = new Identifier(SpecificSlots.ID(), "textures/blocks/dragon_egg_i.png");
     public static final Identifier DRAGON_HEAD = new Identifier(SpecificSlots.ID(), "textures/blocks/dragon_head_i.png");
+    public static final Identifier FENCE_GATE = new Identifier(SpecificSlots.ID(), "textures/blocks/fence_gate_i.png");
     public static final Identifier PIGLIN_SCULL = new Identifier(SpecificSlots.ID(), "textures/blocks/piglin_scull_i.png");
     public static final Identifier PLATE = new Identifier(SpecificSlots.ID(), "textures/blocks/plate_i.png");
     public static final Identifier SCAFFOLDING = new Identifier(SpecificSlots.ID(), "textures/blocks/scaffolding_i.png");
     public static final Identifier SCULK_SENSOR = new Identifier(SpecificSlots.ID(), "textures/blocks/sculk_sensor_i.png");
     public static final Identifier SCULK_SHRIEKER = new Identifier(SpecificSlots.ID(), "textures/blocks/sculk_shrieker_i.png");
+    public static final Identifier SHIELD = new Identifier(SpecificSlots.ID(), "textures/blocks/shield_i.png");
     public static final Identifier SHULKER = new Identifier(SpecificSlots.ID(), "textures/blocks/shulker_i.png");
     public static final Identifier SKELETON_SCULL = new Identifier(SpecificSlots.ID(), "textures/blocks/skeleton_scull_i.png");
     public static final Identifier SLAB = new Identifier(SpecificSlots.ID(), "textures/blocks/slab_i.png");
@@ -34,8 +37,18 @@ public class GhostBlocks {
     public static final Identifier STAIRS = new Identifier(SpecificSlots.ID(), "textures/blocks/stairs_i.png");
     public static final Identifier STEVE_SCULL = new Identifier(SpecificSlots.ID(), "textures/blocks/steve_scull_i.png");
     public static final Identifier TRAPDOOR = new Identifier(SpecificSlots.ID(), "textures/blocks/trapdoor_i.png");
-    public static final Identifier BANNER = new Identifier(SpecificSlots.ID(), "textures/blocks/banner_i.png");
-    public static final Identifier SHIELD = new Identifier(SpecificSlots.ID(), "textures/blocks/shield_i.png");
+    public static final Identifier WALL = new Identifier(SpecificSlots.ID(), "textures/blocks/wall_i.png");
+    public static final Identifier END_ROD = new Identifier(SpecificSlots.ID(), "textures/blocks/end_rod_i.png");
+    public static final Identifier LIGHTNING_ROD = new Identifier(SpecificSlots.ID(), "textures/blocks/lightning_rod_i.png");
+    public static final Identifier AZALEA = new Identifier(SpecificSlots.ID(), "textures/blocks/azalia_i.png");
+    public static final Identifier FLOWERING_AZALEA = new Identifier(SpecificSlots.ID(), "textures/blocks/flowering_azalia_i.png");
+    public static final Identifier BIG_DRIPLEAF = new Identifier(SpecificSlots.ID(), "textures/blocks/big_dripleaf_i.png");
+    public static final Identifier SMALL_DRIPLEAF = new Identifier(SpecificSlots.ID(), "textures/blocks/small_dripleaf_i.png");
+    public static final Identifier LECTERN = new Identifier(SpecificSlots.ID(), "textures/blocks/lectern_i.png");
+    public static final Identifier SPORE_BLOSSOM = new Identifier(SpecificSlots.ID(), "textures/blocks/spore_blossom_i.png");
+    public static final Identifier STONECUTTER = new Identifier(SpecificSlots.ID(), "textures/blocks/stonecutter_i.png");
+    public static final Identifier GRINDSTONE = new Identifier(SpecificSlots.ID(), "textures/blocks/grindstone_i.png");
+    public static final Identifier FENCE = new Identifier(SpecificSlots.ID(), "textures/blocks/fence_i.png");
     private static final Map<HashSet<Item>, Identifier> BLOCK_TEXTURES = new HashMap<>();
 
     static {
@@ -433,7 +446,9 @@ public class GhostBlocks {
                 Items.JIGSAW,
                 Items.OCHRE_FROGLIGHT,
                 Items.VERDANT_FROGLIGHT,
-                Items.PEARLESCENT_FROGLIGHT
+                Items.PEARLESCENT_FROGLIGHT,
+                Items.SUSPICIOUS_GRAVEL,
+                Items.SUSPICIOUS_SAND
         )), BLOCK);
 
         BLOCK_TEXTURES.put(new HashSet<>(Arrays.asList(
@@ -693,6 +708,60 @@ public class GhostBlocks {
                 Items.WARPED_BUTTON
         )), BUTTON);
 
+        BLOCK_TEXTURES.put(new HashSet<>(Arrays.asList(
+                Items.OAK_FENCE,
+                Items.SPRUCE_FENCE,
+                Items.BIRCH_FENCE,
+                Items.JUNGLE_FENCE,
+                Items.ACACIA_FENCE,
+                Items.CHERRY_FENCE,
+                Items.DARK_OAK_FENCE,
+                Items.MANGROVE_FENCE,
+                Items.BAMBOO_FENCE,
+                Items.CRIMSON_FENCE,
+                Items.WARPED_FENCE,
+                Items.NETHER_BRICK_FENCE
+        )), FENCE);
+
+        BLOCK_TEXTURES.put(new HashSet<>(Arrays.asList(
+                Items.OAK_FENCE_GATE,
+                Items.SPRUCE_FENCE_GATE,
+                Items.BIRCH_FENCE_GATE,
+                Items.JUNGLE_FENCE_GATE,
+                Items.ACACIA_FENCE_GATE,
+                Items.CHERRY_FENCE_GATE,
+                Items.DARK_OAK_FENCE_GATE,
+                Items.MANGROVE_FENCE_GATE,
+                Items.BAMBOO_FENCE_GATE,
+                Items.CRIMSON_FENCE_GATE,
+                Items.WARPED_FENCE_GATE
+        )), FENCE_GATE);
+
+        BLOCK_TEXTURES.put(new HashSet<>(Arrays.asList(
+                Items.COBBLESTONE_WALL,
+                Items.MOSSY_COBBLESTONE_WALL,
+                Items.BRICK_WALL,
+                Items.PRISMARINE_WALL,
+                Items.RED_SANDSTONE_WALL,
+                Items.MOSSY_STONE_BRICK_WALL,
+                Items.GRANITE_WALL,
+                Items.STONE_BRICK_WALL,
+                Items.MUD_BRICK_WALL,
+                Items.NETHER_BRICK_WALL,
+                Items.ANDESITE_WALL,
+                Items.RED_NETHER_BRICK_WALL,
+                Items.SANDSTONE_WALL,
+                Items.END_STONE_BRICK_WALL,
+                Items.DIORITE_WALL,
+                Items.BLACKSTONE_WALL,
+                Items.POLISHED_BLACKSTONE_WALL,
+                Items.POLISHED_BLACKSTONE_BRICK_WALL,
+                Items.COBBLED_DEEPSLATE_WALL,
+                Items.POLISHED_DEEPSLATE_WALL,
+                Items.DEEPSLATE_BRICK_WALL,
+                Items.DEEPSLATE_TILE_WALL
+        )), WALL);
+
         BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.BEACON)), BEACON);
         BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.DRAGON_HEAD)), DRAGON_HEAD);
         BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SCAFFOLDING)), SCAFFOLDING);
@@ -705,11 +774,23 @@ public class GhostBlocks {
         BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.PIGLIN_HEAD)), PIGLIN_SCULL);
         BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.CREEPER_HEAD)), CREEPER_SCULL);
         BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SHIELD)), SHIELD);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.CALIBRATED_SCULK_SENSOR)), CALIBRATED_SCULK_SENSOR);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.LIGHTNING_ROD)), LIGHTNING_ROD);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.END_ROD)), END_ROD);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.FLOWERING_AZALEA)), FLOWERING_AZALEA);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.AZALEA)), AZALEA);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.BIG_DRIPLEAF)), BIG_DRIPLEAF);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SMALL_DRIPLEAF)), SMALL_DRIPLEAF);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.LECTERN)), LECTERN);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.STONECUTTER)), STONECUTTER);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.SPORE_BLOSSOM)), SPORE_BLOSSOM);
+        BLOCK_TEXTURES.put(new HashSet<>(Collections.singletonList(Items.GRINDSTONE)), GRINDSTONE);
 
     }
 
     @Nullable
     public static Identifier getTexture(Item item) {
+
         for (HashSet<Item> itemList : BLOCK_TEXTURES.keySet()) {
             if (itemList.contains(item)) {
                 return BLOCK_TEXTURES.get(itemList);
