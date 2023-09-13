@@ -3,11 +3,14 @@ package net.lopymine.specificslots.handlers;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+
+import java.util.*;
 import org.jetbrains.annotations.Nullable;
 
-public class BasedDrawableHandler<T extends ScreenHandler> implements DrawableHandler {
+public class BasedHandledScreenHelper<T extends ScreenHandler> implements HandledScreenHelper {
 
     protected final T handler;
     protected final Screen screen;
@@ -16,7 +19,7 @@ public class BasedDrawableHandler<T extends ScreenHandler> implements DrawableHa
     protected int inventoryX = 0;
     protected int inventoryY = 0;
 
-    public BasedDrawableHandler(T handler, Screen screen) {
+    public BasedHandledScreenHelper(T handler, Screen screen) {
         this.handler = handler;
         this.screen = screen;
     }
@@ -74,7 +77,6 @@ public class BasedDrawableHandler<T extends ScreenHandler> implements DrawableHa
 
         for (Slot slot : handler.slots) {
             if (slot.inventory == player.getInventory()) return slot;
-
         }
 
         return null;
@@ -82,18 +84,25 @@ public class BasedDrawableHandler<T extends ScreenHandler> implements DrawableHa
 
     @Nullable
     protected Slot getFirstHotBarSlot(T handler) {
-        ClientPlayerEntity player = MinecraftClient.getInstance().player;
+        PlayerEntity player = MinecraftClient.getInstance().player;
         if (player == null) return null;
         if (handler == null) return null;
-        Slot slot = getFirstInventorySlot(handler);
 
-        if (slot == null) return null;
-        int index = slot.id + 27;
-        if (index > handler.slots.size()) return null;
+        List<Slot> slots = getPlayerSlots(player, handler);
+        int index = slots.size() - 9;
+        if(index > 0) return slots.get(index);
 
-        Slot hotbarSlot = handler.getSlot(index);
-        if (hotbarSlot.inventory == player.getInventory()) return hotbarSlot;
         return null;
+    }
+
+    protected List<Slot> getPlayerSlots(PlayerEntity player, T handler){
+        List<Slot> slots = new ArrayList<>();
+
+        for (Slot slot : handler.slots) {
+            if (slot.inventory == player.getInventory()) slots.add(slot);
+        }
+
+        return slots;
     }
 
 }

@@ -1,9 +1,9 @@
 package net.lopymine.specificslots.modmenu;
 
-import com.terraformersmc.modmenu.api.ConfigScreenFactory;
-import com.terraformersmc.modmenu.api.ModMenuApi;
-import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
+import com.terraformersmc.modmenu.api.*;
+
+import net.fabricmc.loader.api.*;
+
 import net.lopymine.specificslots.gui.screen.SpecificScreen;
 
 import java.util.HashSet;

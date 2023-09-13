@@ -2,19 +2,16 @@ package net.lopymine.specificslots.textures;
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
-import net.fabricmc.loader.api.FabricLoader;
-import net.lopymine.specificslots.utils.ItemUtils;
 import net.minecraft.item.Item;
-import net.minecraft.resource.ResourcePack;
-import net.minecraft.resource.ResourceType;
+import net.minecraft.resource.*;
 import net.minecraft.util.Identifier;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import net.fabricmc.loader.api.FabricLoader;
+
+import net.lopymine.specificslots.utils.ItemUtils;
+
+import java.io.*;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static net.lopymine.specificslots.SpecificSlots.logger;

@@ -1,12 +1,10 @@
 package net.lopymine.specificslots.gui.panels.list;
 
-import io.github.cottonmc.cotton.gui.widget.WListPanel;
-import io.github.cottonmc.cotton.gui.widget.WWidget;
+import io.github.cottonmc.cotton.gui.widget.*;
 import io.github.cottonmc.cotton.gui.widget.data.Axis;
 
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class WListPanelExt<D,W extends WWidget> extends WListPanel<D, W> {
 

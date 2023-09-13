@@ -1,12 +1,12 @@
 package net.lopymine.specificslots.textures;
 
-import net.lopymine.specificslots.SpecificSlots;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
+
+import net.lopymine.specificslots.SpecificSlots;
 
 import java.util.*;
+import org.jetbrains.annotations.Nullable;
 
 public class ShadowItems {
     public static final Identifier ACACIA_DOOR = new Identifier(SpecificSlots.ID(), "textures/items/acacia_door_i.png");

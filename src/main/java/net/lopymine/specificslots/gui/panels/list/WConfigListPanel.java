@@ -1,10 +1,9 @@
 package net.lopymine.specificslots.gui.panels.list;
 
-import io.github.cottonmc.cotton.gui.widget.TooltipBuilder;
-import io.github.cottonmc.cotton.gui.widget.WButton;
-import io.github.cottonmc.cotton.gui.widget.WPlainPanel;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+
+import io.github.cottonmc.cotton.gui.widget.*;
 
 public class WConfigListPanel extends WPlainPanel {
     public WButton button;

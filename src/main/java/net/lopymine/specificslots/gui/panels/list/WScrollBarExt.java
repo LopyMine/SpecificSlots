@@ -1,8 +1,7 @@
 package net.lopymine.specificslots.gui.panels.list;
 
 import io.github.cottonmc.cotton.gui.widget.WScrollBar;
-import io.github.cottonmc.cotton.gui.widget.data.Axis;
-import io.github.cottonmc.cotton.gui.widget.data.InputResult;
+import io.github.cottonmc.cotton.gui.widget.data.*;
 
 public class WScrollBarExt extends WScrollBar {
     public WScrollBarExt(Axis vertical) {

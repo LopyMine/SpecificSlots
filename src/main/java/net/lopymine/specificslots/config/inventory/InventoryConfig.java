@@ -1,7 +1,6 @@
 package net.lopymine.specificslots.config.inventory;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class InventoryConfig {
     private final String author;

@@ -1,10 +1,12 @@
 package net.lopymine.specificslots.gui.widgets.vanilla;
 
-import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
-import net.lopymine.specificslots.utils.DrawUtils;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
+
+import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
+
+import net.lopymine.specificslots.utils.DrawUtils;
 
 public class GhostItemsShowWidget extends ButtonWidget {
 

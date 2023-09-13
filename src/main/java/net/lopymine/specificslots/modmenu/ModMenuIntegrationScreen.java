@@ -1,12 +1,11 @@
 package net.lopymine.specificslots.modmenu;
 
-import me.shedaniel.clothconfig2.api.ConfigBuilder;
-import me.shedaniel.clothconfig2.api.ConfigCategory;
-import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.lopymine.specificslots.config.SpecificConfig;
-import net.lopymine.specificslots.config.SpecificConfigManager;
+import me.shedaniel.clothconfig2.api.*;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+
+import net.lopymine.specificslots.config.*;
+import net.lopymine.specificslots.modmenu.enums.SortMode;
 
 public class ModMenuIntegrationScreen {
     public static Screen createScreen(Screen parentScreen) {
@@ -41,7 +40,7 @@ public class ModMenuIntegrationScreen {
         ConfigCategory wrongSlots = configBuilder.getOrCreateCategory(Text.translatable("specific_slots.mod_menu.wrong_slots"));
 
         wrongSlots.addEntry(entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.highlight_wrong_slots"), config.enableHighlightWrongSlots)
-                .setSaveConsumer(bool -> config.enableHighlightWrongSlots = bool)
+                .setSaveConsumer(bl -> config.enableHighlightWrongSlots = bl)
                 .setDefaultValue(true)
                 .build());
 
@@ -53,6 +52,20 @@ public class ModMenuIntegrationScreen {
         wrongSlots.addEntry(entryBuilder.startIntSlider(Text.translatable("specific_slots.mod_menu.highlight_wrong_slots.alpha"), config.alpha, 0, 100)
                 .setSaveConsumer(alpha -> config.alpha = alpha)
                 .setDefaultValue(30)
+                .build());
+
+        ConfigCategory sorting = configBuilder.getOrCreateCategory(Text.translatable("specific_slots.mod_menu.sort"));
+
+        sorting.addEntry(entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.specific_shift_sort"), config.enableSpecificShiftSort)
+                .setSaveConsumer(bl -> config.enableSpecificShiftSort = bl)
+                .setTooltip(Text.translatable("specific_slots.mod_menu.specific_shift_sort.tooltip"))
+                .setDefaultValue(true)
+                .build());
+
+        sorting.addEntry(entryBuilder.startSelector(Text.translatable("specific_slots.mod_menu.sortMode"), SortMode.values(), config.sortMode)
+                .setSaveConsumer(mode -> config.sortMode = mode)
+                .setNameProvider(SortMode::getText)
+                .setDefaultValue(SortMode.ALL)
                 .build());
 
         return configBuilder.build();

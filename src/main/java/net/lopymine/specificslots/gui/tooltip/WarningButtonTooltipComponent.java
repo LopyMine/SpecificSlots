@@ -1,6 +1,5 @@
 package net.lopymine.specificslots.gui.tooltip;
 
-import net.lopymine.specificslots.utils.DrawUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -10,6 +9,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import org.joml.Matrix4f;
+
+import net.lopymine.specificslots.utils.DrawUtils;
 
 public class WarningButtonTooltipComponent implements TooltipComponent {
     private final ItemStack requiredItem;
@@ -56,7 +57,7 @@ public class WarningButtonTooltipComponent implements TooltipComponent {
         MatrixStack matrices = context.getMatrices();
 
         matrices.push();
-        matrices.translate(x, y - 1, 300);
+        matrices.translate(x, y - 1, 400);
 
         DrawUtils.drawSlot(context, d, 0, false);
         DrawUtils.drawSlot(context, d + l + 18, 0, false);

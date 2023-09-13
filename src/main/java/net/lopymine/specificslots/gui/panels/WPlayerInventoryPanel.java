@@ -1,36 +1,28 @@
 package net.lopymine.specificslots.gui.panels;
 
-import io.github.cottonmc.cotton.gui.GuiDescription;
-import io.github.cottonmc.cotton.gui.client.BackgroundPainter;
-import io.github.cottonmc.cotton.gui.widget.TooltipBuilder;
-import io.github.cottonmc.cotton.gui.widget.WButton;
-import io.github.cottonmc.cotton.gui.widget.WPlainPanel;
-import io.github.cottonmc.cotton.gui.widget.WWidget;
-import io.github.cottonmc.cotton.gui.widget.icon.TextureIcon;
-import net.lopymine.specificslots.config.inventory.InventoryConfig;
-import net.lopymine.specificslots.config.SpecificConfig;
-import net.lopymine.specificslots.gui.config.LoadConfigGui;
-import net.lopymine.specificslots.gui.config.SaveConfigGui;
-import net.lopymine.specificslots.gui.screen.SpecificScreen;
-import net.lopymine.specificslots.gui.widgets.WGhostItemsShow;
-import net.lopymine.specificslots.gui.widgets.WSlot;
-import net.lopymine.specificslots.textures.ShadowItems;
-import net.lopymine.specificslots.utils.DrawUtils;
-import net.lopymine.specificslots.utils.ItemUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import io.github.cottonmc.cotton.gui.GuiDescription;
+import io.github.cottonmc.cotton.gui.client.BackgroundPainter;
+import io.github.cottonmc.cotton.gui.widget.*;
+import io.github.cottonmc.cotton.gui.widget.icon.TextureIcon;
+
+import net.lopymine.specificslots.config.SpecificConfig;
+import net.lopymine.specificslots.config.inventory.InventoryConfig;
+import net.lopymine.specificslots.gui.config.*;
+import net.lopymine.specificslots.gui.screen.SpecificScreen;
+import net.lopymine.specificslots.gui.widgets.*;
+import net.lopymine.specificslots.textures.ShadowItems;
+import net.lopymine.specificslots.utils.*;
+
+import java.util.*;
 import java.util.stream.Stream;
 
 public class WPlayerInventoryPanel extends WPlainPanel {

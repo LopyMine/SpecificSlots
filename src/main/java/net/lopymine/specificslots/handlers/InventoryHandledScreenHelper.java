@@ -3,11 +3,12 @@ package net.lopymine.specificslots.handlers;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+
 import org.jetbrains.annotations.Nullable;
 
-public class InventoryDrawableHandler<T extends ScreenHandler> extends BasedDrawableHandler<T>{
+public class InventoryHandledScreenHelper<T extends ScreenHandler> extends BasedHandledScreenHelper<T> {
 
-    public InventoryDrawableHandler(T handler, Screen screen) {
+    public InventoryHandledScreenHelper(T handler, Screen screen) {
         super(handler, screen);
 
     }

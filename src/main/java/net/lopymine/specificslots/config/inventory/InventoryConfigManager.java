@@ -1,18 +1,13 @@
 package net.lopymine.specificslots.config.inventory;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import net.lopymine.specificslots.SpecificSlots;
-import net.lopymine.specificslots.config.SpecificConfig;
-import net.lopymine.specificslots.config.SpecificConfigManager;
+import com.google.gson.*;
 import net.minecraft.client.MinecraftClient;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import net.lopymine.specificslots.SpecificSlots;
+import net.lopymine.specificslots.config.*;
+
+import java.io.*;
+import java.util.*;
 
 import static net.lopymine.specificslots.SpecificSlots.logger;
 

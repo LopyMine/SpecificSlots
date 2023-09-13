@@ -1,21 +1,22 @@
 package net.lopymine.specificslots.utils;
 
-import net.lopymine.specificslots.config.inventory.InventoryConfig;
-import net.lopymine.specificslots.gui.widgets.WSlot;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
+import net.lopymine.specificslots.config.inventory.InventoryConfig;
+import net.lopymine.specificslots.gui.widgets.WSlot;
+
+import java.util.*;
 
 public class ItemUtils {
-    private static final LinkedHashSet<Item> items = new LinkedHashSet<>();
+    private static final LinkedHashSet<Item> ITEMS = new LinkedHashSet<>();
     public static LinkedHashSet<Item> getMinecraftItems() {
-        if(!items.isEmpty()) return items;
-        Registries.ITEM.iterator().forEachRemaining(items::add);
-        return items;
+        if(!ITEMS.isEmpty()) return ITEMS;
+        Registries.ITEM.iterator().forEachRemaining(ITEMS::add);
+
+        return ITEMS;
     }
 
     public static Item getItemByName(String name){
@@ -28,11 +29,12 @@ public class ItemUtils {
     public static Item getItemByName(String mod, String path){
         String modId = mod;
         if(mod.equals("vanilla")) modId = "minecraft";
-        return Registries.ITEM.get(new Identifier(modId,path));
+
+        return Registries.ITEM.get(new Identifier(modId, path));
     }
 
     public static String getItemName(Item item) {
-        return item.getTranslationKey().substring(item.getTranslationKey().indexOf('.')+1).replaceAll("\\.",":");
+        return Registries.ITEM.getId(item).toString();
     }
 
     public static List<Item> getItemsFromConfig(InventoryConfig config){
@@ -49,4 +51,10 @@ public class ItemUtils {
         return names;
     }
 
+    public static LinkedList<ItemStack> transformMainInventory(DefaultedList<ItemStack> main) {
+        List<ItemStack> inventoryList = new ArrayList<>(main.subList(9, 36));
+        List<ItemStack> hotBarList = new ArrayList<>(main.subList(0, 9).stream().toList());
+        inventoryList.addAll(hotBarList);
+        return new LinkedList<>(inventoryList);
+    }
 }

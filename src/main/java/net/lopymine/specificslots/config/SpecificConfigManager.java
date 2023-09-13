@@ -1,14 +1,11 @@
 package net.lopymine.specificslots.config;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import net.lopymine.specificslots.SpecificSlots;
-import net.lopymine.specificslots.config.inventory.InventoryConfig;
-import net.lopymine.specificslots.config.inventory.InventoryConfigManager;
+import com.google.gson.*;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import net.lopymine.specificslots.SpecificSlots;
+import net.lopymine.specificslots.config.inventory.*;
+
+import java.io.*;
 
 public class SpecificConfigManager {
     public static final String PATH_TO_CONFIG = "config/";

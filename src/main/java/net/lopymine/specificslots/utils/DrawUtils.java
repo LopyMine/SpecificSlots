@@ -1,13 +1,14 @@
 package net.lopymine.specificslots.utils;
 
-import io.github.cottonmc.cotton.gui.client.BackgroundPainter;
-import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
-import net.lopymine.specificslots.SpecificSlots;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.gui.tooltip.BundleTooltipComponent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+
+import io.github.cottonmc.cotton.gui.client.*;
+
+import net.lopymine.specificslots.SpecificSlots;
 
 import static io.github.cottonmc.cotton.gui.client.BackgroundPainter.createNinePatch;
 

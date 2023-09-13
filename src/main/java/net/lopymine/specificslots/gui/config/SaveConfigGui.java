@@ -1,34 +1,25 @@
 package net.lopymine.specificslots.gui.config;
 
-import io.github.cottonmc.cotton.gui.client.LightweightGuiDescription;
-import io.github.cottonmc.cotton.gui.widget.WButton;
-import io.github.cottonmc.cotton.gui.widget.WLabel;
-import io.github.cottonmc.cotton.gui.widget.WPlainPanel;
-import io.github.cottonmc.cotton.gui.widget.WTextField;
-import io.github.cottonmc.cotton.gui.widget.data.HorizontalAlignment;
-import io.github.cottonmc.cotton.gui.widget.data.InputResult;
-import io.github.cottonmc.cotton.gui.widget.data.Insets;
-import io.github.cottonmc.cotton.gui.widget.data.VerticalAlignment;
-import net.fabricmc.fabric.api.util.TriState;
-import net.lopymine.specificslots.config.inventory.InventoryConfig;
-import net.lopymine.specificslots.config.inventory.InventoryConfigManager;
-import net.lopymine.specificslots.config.SpecificConfig;
-import net.lopymine.specificslots.config.SpecificConfigManager;
-import net.lopymine.specificslots.gui.panels.list.WConfigListPanel;
-import net.lopymine.specificslots.gui.panels.list.WListPanelExt;
-import net.lopymine.specificslots.gui.widgets.WSlot;
-import net.lopymine.specificslots.utils.DrawUtils;
-import net.lopymine.specificslots.utils.ItemUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 
-import java.util.ArrayList;
-import java.util.List;
+import net.fabricmc.fabric.api.util.TriState;
+
+import io.github.cottonmc.cotton.gui.client.LightweightGuiDescription;
+import io.github.cottonmc.cotton.gui.widget.*;
+import io.github.cottonmc.cotton.gui.widget.data.*;
+
+import net.lopymine.specificslots.config.*;
+import net.lopymine.specificslots.config.inventory.*;
+import net.lopymine.specificslots.gui.panels.list.*;
+import net.lopymine.specificslots.gui.widgets.WSlot;
+import net.lopymine.specificslots.utils.*;
+
+import java.util.*;
 import java.util.function.BiConsumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.regex.*;
 
 import static net.lopymine.specificslots.config.inventory.InventoryConfigManager.JSON_FORMAT;
 

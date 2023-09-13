@@ -1,15 +1,18 @@
 package net.lopymine.specificslots.gui.widgets;
 
-import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
-import io.github.cottonmc.cotton.gui.widget.WWidget;
-import io.github.cottonmc.cotton.gui.widget.data.InputResult;
-import net.lopymine.specificslots.SpecificSlots;
-import net.lopymine.specificslots.utils.DrawUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+
+import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
+import io.github.cottonmc.cotton.gui.widget.WWidget;
+import io.github.cottonmc.cotton.gui.widget.data.InputResult;
+
+import net.lopymine.specificslots.SpecificSlots;
+import net.lopymine.specificslots.utils.DrawUtils;
+
 import org.jetbrains.annotations.Nullable;
 
 public class WSwitcher extends WWidget {

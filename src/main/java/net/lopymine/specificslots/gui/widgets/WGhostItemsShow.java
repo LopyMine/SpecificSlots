@@ -1,16 +1,18 @@
 package net.lopymine.specificslots.gui.widgets;
 
-import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
-import io.github.cottonmc.cotton.gui.widget.WButton;
-import io.github.cottonmc.cotton.gui.widget.data.InputResult;
-import io.github.cottonmc.cotton.gui.widget.icon.TextureIcon;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.lopymine.specificslots.utils.DrawUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
+
+import net.fabricmc.api.*;
+
+import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
+import io.github.cottonmc.cotton.gui.widget.WButton;
+import io.github.cottonmc.cotton.gui.widget.data.InputResult;
+import io.github.cottonmc.cotton.gui.widget.icon.TextureIcon;
+
+import net.lopymine.specificslots.utils.DrawUtils;
 
 public class WGhostItemsShow extends WButton {
     private boolean isOn = false;

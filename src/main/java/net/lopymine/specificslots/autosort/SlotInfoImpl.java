@@ -1,7 +1,6 @@
 package net.lopymine.specificslots.autosort;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 
 public class SlotInfoImpl implements ISlot {
     private Item configItem = Items.AIR;

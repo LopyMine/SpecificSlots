@@ -14,4 +14,5 @@ public class SpecificScreen extends CottonClientScreen {
         if(description.getRootPanel().onKeyPressed(ch,keyCode,modifiers) == InputResult.PROCESSED) return true;
         return super.keyPressed(ch, keyCode, modifiers);
     }
+
 }

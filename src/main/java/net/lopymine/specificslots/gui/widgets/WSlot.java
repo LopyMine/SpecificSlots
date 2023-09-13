@@ -1,23 +1,23 @@
 package net.lopymine.specificslots.gui.widgets;
 
-import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
-import io.github.cottonmc.cotton.gui.widget.WWidget;
-import io.github.cottonmc.cotton.gui.widget.data.InputResult;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.lopymine.specificslots.utils.DrawUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.sound.PositionedSoundInstance;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import net.fabricmc.api.*;
+
+import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
+import io.github.cottonmc.cotton.gui.widget.WWidget;
+import io.github.cottonmc.cotton.gui.widget.data.InputResult;
+
+import net.lopymine.specificslots.utils.DrawUtils;
 
 import java.util.function.Consumer;
+import org.jetbrains.annotations.*;
 
 public class WSlot extends WWidget {
     private final int index;

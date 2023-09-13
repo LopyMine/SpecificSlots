@@ -1,26 +1,23 @@
 package net.lopymine.specificslots.mixin;
 
-import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
-import net.lopymine.specificslots.SpecificSlots;
-import net.lopymine.specificslots.config.inventory.InventoryConfig;
-import net.lopymine.specificslots.config.SpecificConfig;
-import net.lopymine.specificslots.textures.ShadowItems;
-import net.lopymine.specificslots.utils.ItemUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
+
+import net.lopymine.specificslots.SpecificSlots;
+import net.lopymine.specificslots.config.SpecificConfig;
+import net.lopymine.specificslots.config.inventory.InventoryConfig;
+import net.lopymine.specificslots.textures.ShadowItems;
+import net.lopymine.specificslots.utils.ItemUtils;
 
 import java.util.List;
 

@@ -1,22 +1,15 @@
 package net.lopymine.specificslots.gui.panels;
 
-import io.github.cottonmc.cotton.gui.widget.WLabel;
-import io.github.cottonmc.cotton.gui.widget.WPlainPanel;
-import io.github.cottonmc.cotton.gui.widget.WTextField;
-import io.github.cottonmc.cotton.gui.widget.WWidget;
-import io.github.cottonmc.cotton.gui.widget.data.HorizontalAlignment;
-import io.github.cottonmc.cotton.gui.widget.data.VerticalAlignment;
-import net.lopymine.specificslots.gui.widgets.WSimpleItemButton;
-import net.lopymine.specificslots.gui.widgets.WSlot;
-import net.lopymine.specificslots.gui.widgets.WSwitcher;
-import net.lopymine.specificslots.textures.ShadowItems;
 import net.minecraft.item.Item;
 import net.minecraft.text.Text;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import io.github.cottonmc.cotton.gui.widget.*;
+import io.github.cottonmc.cotton.gui.widget.data.*;
+
+import net.lopymine.specificslots.gui.widgets.*;
+import net.lopymine.specificslots.textures.ShadowItems;
+
+import java.util.*;
 
 public class WItemsPanel extends WPlainPanel {
     private final int panelWidth;

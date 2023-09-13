@@ -12,7 +12,7 @@ public class TooltipComponents implements TooltipComponent {
 
     private final List<TooltipComponent> components;
 
-    public TooltipComponents(List<TooltipComponent> components){
+    public TooltipComponents(List<TooltipComponent> components) {
         this.components = components;
     }
 
@@ -30,7 +30,7 @@ public class TooltipComponents implements TooltipComponent {
         int width = 0;
         for (TooltipComponent component : components) {
             int componentWidth = component.getWidth(textRenderer);
-            if(componentWidth > width) width = componentWidth;
+            if (componentWidth > width) width = componentWidth;
         }
         return width;
     }
@@ -39,7 +39,7 @@ public class TooltipComponents implements TooltipComponent {
     public void drawText(TextRenderer textRenderer, int x, int y, Matrix4f matrix, VertexConsumerProvider.Immediate vertexConsumers) {
         int componentY = 0;
         for (TooltipComponent component : components) {
-            component.drawText(textRenderer,x,y + componentY,matrix,vertexConsumers);
+            component.drawText(textRenderer, x, y + componentY, matrix, vertexConsumers);
             componentY += component.getHeight() + 1;
         }
     }

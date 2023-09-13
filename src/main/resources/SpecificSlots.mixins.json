@@ -5,9 +5,12 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [],
   "client": [
+    "CreativeScreenMixin",
     "HandledScreenMixin",
     "InGameHudMixin",
-    "ReloadableResourceManagerImplMixin"
+    "InventoryScreenMixin",
+    "ReloadableResourceManagerImplMixin",
+    "ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,22 +1,23 @@
 package net.lopymine.specificslots.gui.widgets.vanilla;
 
-import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
-import net.lopymine.specificslots.gui.tooltip.utils.TooltipComponentsData;
-import net.lopymine.specificslots.gui.tooltip.WarningTooltipData;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ClickableWidget;
 import net.minecraft.client.sound.SoundManager;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
+
+import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
+
+import net.lopymine.specificslots.gui.tooltip.WarningTooltipData;
+import net.lopymine.specificslots.gui.tooltip.utils.TooltipComponentsData;
+import net.lopymine.specificslots.utils.mixins.IWarningScreen;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import org.jetbrains.annotations.Nullable;
 
 public class WarningWidget extends ClickableWidget {
     private static final int width = 6;
@@ -48,13 +49,12 @@ public class WarningWidget extends ClickableWidget {
         if (this.visible) {
             this.hovered = mouseX >= this.getX() && mouseY >= this.getY() && mouseX < this.getX() + width && mouseY < this.getY() + height;
             this.renderButton(context, mouseX, mouseY, delta);
-            this.renderTooltip(context, mouseX, mouseY);
+            this.renderTooltip();
         }
         data.clear();
     }
 
-    public void renderTooltip(DrawContext context, int x, int y) {
-
+    public void renderTooltip() {
         if (!data.isEmpty() && hovered) {
             int endIndex = 5;
             if (endIndex > data.size()) endIndex = data.size();
@@ -62,7 +62,12 @@ public class WarningWidget extends ClickableWidget {
             subData = new ArrayList<>(data.subList(0, endIndex));
             if (subData.isEmpty()) return;
 
-            context.drawTooltip(MinecraftClient.getInstance().textRenderer, List.of(Text.translatable("specific_slots.mod_menu.wrong_slots").formatted(Formatting.RED).append(":")), Optional.of(new TooltipComponentsData(subData.stream().toList())), x, y);
+            Screen currentScreen = MinecraftClient.getInstance().currentScreen;
+            if(currentScreen == null) return;
+
+            if(currentScreen instanceof IWarningScreen screen){
+                screen.setTooltipData(new TooltipComponentsData(subData.stream().toList()));
+            }
         }
     }
 
@@ -81,5 +86,6 @@ public class WarningWidget extends ClickableWidget {
     @Override
     public void onClick(double mouseX, double mouseY) {
     }
+
 }
 
