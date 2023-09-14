@@ -22,12 +22,11 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
     @Unique
     private TooltipData  data;
 
-    @Inject(at = @At("HEAD"), method = "renderWithTooltip", cancellable = true)
+    @Inject(at = @At("HEAD"), method = "renderWithTooltip")
     private void render(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         if(this.data != null){
             context.drawTooltip(this.textRenderer, List.of(Text.translatable("specific_slots.mod_menu.wrong_slots").formatted(Formatting.RED).append(":")), Optional.of(data), mouseX, mouseY);
             this.data = null;
-            ci.cancel();
         }
     }
 
