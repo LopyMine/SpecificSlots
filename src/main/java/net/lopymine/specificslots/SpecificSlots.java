@@ -8,8 +8,6 @@ import net.fabricmc.loader.api.FabricLoader;
 
 import net.lopymine.specificslots.config.*;
 import net.lopymine.specificslots.config.inventory.*;
-import net.lopymine.specificslots.textures.ShadowItems;
-import net.lopymine.specificslots.utils.ItemUtils;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -43,10 +41,10 @@ public class SpecificSlots implements ModInitializer {
         config = SpecificConfigManager.getConfig();
         inventoryConfig = SpecificConfigManager.getInventoryConfig();
 
-        ItemUtils.getMinecraftItems().forEach(item -> {
-            if (ShadowItems.getTexture(item) == null)
-                System.out.println("Items." + item.getTranslationKey().substring(item.getTranslationKey().lastIndexOf('.') + 1).toUpperCase());
-        });
+        //ItemUtils.getMinecraftItems().forEach(item -> {
+        //    if (ShadowItems.getTexture(item) == null)
+        //        System.out.println("Items." + item.getTranslationKey().substring(item.getTranslationKey().lastIndexOf('.') + 1).toUpperCase());
+        //});
 
     }
 

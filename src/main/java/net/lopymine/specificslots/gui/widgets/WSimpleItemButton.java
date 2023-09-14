@@ -54,7 +54,7 @@ public class WSimpleItemButton extends WWidget {
     @Environment(EnvType.CLIENT)
     @Override
     public void addTooltip(TooltipBuilder tooltip) {
-        tooltip.add(Text.of(item.getName().getString()));
+        tooltip.add(Text.translatable(item.getTranslationKey()));
     }
 
     @Environment(EnvType.CLIENT)
