@@ -11,6 +11,8 @@ import io.github.cottonmc.cotton.gui.client.LightweightGuiDescription;
 import io.github.cottonmc.cotton.gui.widget.*;
 import io.github.cottonmc.cotton.gui.widget.data.*;
 
+import net.lopymine.specificslots.config.SpecificConfigManager;
+
 public class NoClothConfigScreen extends LightweightGuiDescription {
     public NoClothConfigScreen(Screen screen) {
         WPlainPanel root = new WPlainPanel();
@@ -23,7 +25,7 @@ public class NoClothConfigScreen extends LightweightGuiDescription {
         int h = mc.currentScreen.height;
         root.setSize(w, h);
 
-        WLabel label = new WLabel(Text.translatable("specific_slots.no_cloth_config"))
+        WLabel label = new WLabel(Text.translatable("specific_slots.no_cloth_config.title"))
                 .setColor(0xFFFFFFFF)
                 .setHorizontalAlignment(HorizontalAlignment.CENTER)
                 .setVerticalAlignment(VerticalAlignment.CENTER);
@@ -46,7 +48,6 @@ public class NoClothConfigScreen extends LightweightGuiDescription {
 
     @Override
     public TriState isDarkMode() {
-        return TriState.TRUE;
-        //return TriState.of(SpecificConfigManager.getDefaultConfig().isDarkMode);
+        return TriState.of(SpecificConfigManager.getConfig().isDarkMode);
     }
 }
