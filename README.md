@@ -8,4 +8,4 @@
 #
 ![Specific Addition](https://cdn.discordapp.com/attachments/622183123681017867/1151973519773683924/Specific_Addition.png)
 ## Specific Addition is a resource pack in which you can add or replace textures for any items with Specific Slots!
-- You can download it on the Specific Slots github
+- You can download it on the Specific Slots wiki page
