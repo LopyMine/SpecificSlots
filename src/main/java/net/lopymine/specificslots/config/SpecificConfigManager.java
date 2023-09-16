@@ -95,11 +95,13 @@ public class SpecificConfigManager {
      * Sets server inventory config for Specific Slots.
      * <p>
      * Automatically sets the config to {@link SpecificSlots#config }.
+     * <p>
+     * Automatically sets the server inventory config to {@link SpecificSlots#inventoryConfig }.
      *
      * @param config       the Specific Slots config
      * @param serverConfig the server inventory config
      */
-    public static void addServerInventoryConfig(SpecificConfig config, ServerInventoryConfig serverConfig) {
+    public static void addServerInventoryConfig(SpecificConfig config, ServerInventoryConfig serverConfig, InventoryConfig serverInventoryConfig) {
         config.addServerInventoryConfig(serverConfig);
 
         String json = gson.toJson(config, SpecificConfig.class);
@@ -108,6 +110,7 @@ public class SpecificConfigManager {
             writer.write(json);
 
             SpecificSlots.config = config;
+            SpecificSlots.inventoryConfig = serverInventoryConfig;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -117,11 +120,13 @@ public class SpecificConfigManager {
      * Removes server inventory config for Specific Slots.
      * <p>
      * Automatically sets the config to {@link SpecificSlots#config }.
+     * <p>
+     * Automatically sets the server inventory config to {@link SpecificSlots#inventoryConfig }.
      *
      * @param config       the Specific Slots config
      * @param serverConfig the server inventory config
      */
-    public static void removeServerInventoryConfig(SpecificConfig config, ServerInventoryConfig serverConfig) {
+    public static void removeServerInventoryConfig(SpecificConfig config, ServerInventoryConfig serverConfig, InventoryConfig serverInventoryConfig) {
         config.removeServerInventoryConfig(serverConfig);
 
         String json = gson.toJson(config, SpecificConfig.class);
@@ -130,6 +135,7 @@ public class SpecificConfigManager {
             writer.write(json);
 
             SpecificSlots.config = config;
+            SpecificSlots.inventoryConfig = serverInventoryConfig;
         } catch (IOException e) {
             e.printStackTrace();
         }

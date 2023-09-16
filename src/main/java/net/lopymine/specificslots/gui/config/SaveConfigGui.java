@@ -100,7 +100,8 @@ public class SaveConfigGui extends LightweightGuiDescription {
                     }
 
                     this.saveConfig(field.getText(), inventory, hotBar, pinButton.getToggle());
-                    updateList(InventoryConfigManager.getConfigs());
+                    configs = InventoryConfigManager.getConfigs();
+                    updateList(configs);
                 });
 
         root.add(save, 15, 50, 150, 20);
@@ -156,12 +157,12 @@ public class SaveConfigGui extends LightweightGuiDescription {
         InventoryConfigManager.writeConfig(inventoryConfig);
 
         if (pin) {
-            SpecificConfigManager.addServerInventoryConfig(this.config, new ServerInventoryConfig(server, inventoryConfig.getName()));
+            SpecificConfigManager.addServerInventoryConfig(this.config, new ServerInventoryConfig(server, inventoryConfig.getName()), inventoryConfig);
         } else if (server == null) {
             SpecificConfigManager.setConfig(this.config, inventoryConfig);
         } else {
             SpecificConfigManager.setConfig(this.config, inventoryConfig);
-            SpecificConfigManager.removeServerInventoryConfig(this.config, new ServerInventoryConfig(server, inventoryConfig.getName()));
+            SpecificConfigManager.removeServerInventoryConfig(this.config, new ServerInventoryConfig(server, inventoryConfig.getName()), inventoryConfig);
         }
         this.config = SpecificSlots.config;
     }
