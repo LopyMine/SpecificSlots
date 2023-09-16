@@ -11,3 +11,13 @@
 
 - Someone: Wow, where can I find an example of the Specific Addition resource pack?
 - Me: Of course! **It can be found on the mod's Github**
+#
+| Minecraft Version | Status |
+|----------|----------|
+| 1.20-1     | Ready   |
+| 1.19.4     | Work In Progress   |
+| 1.19.3     | Work In Progress   |
+| 1.19-2     | Work In Progress   |
+#
+Thanks ThePotatoKing55 and Thanos1716 for 2D Blocks texture pack! 
+You can download their resource pack [here](https://github.com/Thanos1716/2d-block-item-resourcepack/releases)
