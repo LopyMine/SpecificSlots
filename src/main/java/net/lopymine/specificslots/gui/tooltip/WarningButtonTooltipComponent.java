@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import org.joml.Matrix4f;
 
-import net.lopymine.specificslots.utils.DrawUtils;
+import net.lopymine.specificslots.utils.Painters;
 
 public class WarningButtonTooltipComponent implements TooltipComponent {
     private final ItemStack requiredItem;
@@ -59,8 +59,8 @@ public class WarningButtonTooltipComponent implements TooltipComponent {
         matrices.push();
         matrices.translate(x, y - 1, 400);
 
-        DrawUtils.drawSlot(context, d, 0, false);
-        DrawUtils.drawSlot(context, d + l + 18, 0, false);
+        Painters.drawSlot(context, d, 0, false);
+        Painters.drawSlot(context, d + l + 18, 0, false);
 
         matrices.translate(0, 0, 50);
 

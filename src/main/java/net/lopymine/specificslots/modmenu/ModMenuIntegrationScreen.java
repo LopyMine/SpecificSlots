@@ -62,7 +62,7 @@ public class ModMenuIntegrationScreen {
                 .setDefaultValue(true)
                 .build());
 
-        sorting.addEntry(entryBuilder.startSelector(Text.translatable("specific_slots.mod_menu.sortMode"), SortMode.values(), config.sortMode)
+        sorting.addEntry(entryBuilder.startSelector(Text.translatable("specific_slots.mod_menu.sort_mode"), SortMode.values(), config.sortMode)
                 .setSaveConsumer(mode -> config.sortMode = mode)
                 .setNameProvider(SortMode::getText)
                 .setDefaultValue(SortMode.ALL)

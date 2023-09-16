@@ -33,7 +33,7 @@ public class InGameHudMixin {
     private InventoryConfig inventoryConfig = SpecificSlots.inventoryConfig;
 
     @Inject(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;pop()V", shift = At.Shift.AFTER))
-    private void render(float tickDelta, DrawContext context, CallbackInfo ci) {
+    private void renderHotbar(float tickDelta, DrawContext context, CallbackInfo ci) {
         this.config = SpecificSlots.config;
         this.inventoryConfig = SpecificSlots.inventoryConfig;
 

@@ -2,11 +2,12 @@ package net.lopymine.specificslots.gui.widgets.vanilla;
 
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.sound.SoundManager;
 import net.minecraft.text.Text;
 
 import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
 
-import net.lopymine.specificslots.utils.DrawUtils;
+import net.lopymine.specificslots.utils.Painters;
 
 public class GhostItemsShowWidget extends ButtonWidget {
 
@@ -20,12 +21,17 @@ public class GhostItemsShowWidget extends ButtonWidget {
         super.renderButton(context, mouseX, mouseY, delta);
 
         if (isHovered())
-            ScreenDrawing.texturedRect(context, getX() + 2, getY() + 2, 16, 16, DrawUtils.showItemsFocus, 0xFFFFFFFF);
-        else ScreenDrawing.texturedRect(context, getX() + 2, getY() + 2, 16, 16, DrawUtils.showItems, 0xFFFFFFFF);
+            ScreenDrawing.texturedRect(context, getX() + 2, getY() + 2, 16, 16, Painters.SHOW_ITEMS_FOCUS, 0xFFFFFFFF);
+        else ScreenDrawing.texturedRect(context, getX() + 2, getY() + 2, 16, 16, Painters.SHOW_ITEMS, 0xFFFFFFFF);
     }
 
     @Override
     public void onClick(double mouseX, double mouseY) {
+
+    }
+
+    @Override
+    public void playDownSound(SoundManager soundManager) {
 
     }
 }

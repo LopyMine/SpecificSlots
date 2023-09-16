@@ -3,6 +3,7 @@ package net.lopymine.specificslots.gui;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.screen.ScreenTexts;
+import net.minecraft.text.Text;
 
 import net.fabricmc.fabric.api.util.TriState;
 
@@ -50,7 +51,7 @@ public class SpecificGui extends LightweightGuiDescription {
         root.add(back, 5, h - 25, 80, 20);
 
         WGhostItemsShow itemsShow = new WGhostItemsShow();
-        root.add(itemsShow, 87, h - 25, 20, 18);
+        root.add(itemsShow, 87, h - 25, 20, 20);
 
         WPlayerInventoryPanel playerInventory = new WPlayerInventoryPanel(config, parent, itemsShow, defaultConfig);
         root.add(playerInventory, w / 2 - 88, h / 2 - 83);
@@ -79,5 +80,17 @@ public class SpecificGui extends LightweightGuiDescription {
             SpecificSlots.logger.warn("Screen parent is not instance of SpecificScreen! {}", parent);
         }
         client.setScreen(parent);
+    }
+
+    public static Text cutString(String text, int length) {
+        if (text.length() <= length) {
+            return Text.of(text);
+        } else {
+            String cutText = text.substring(0, length);
+            if (cutText.endsWith(" ")) {
+                cutText = cutText.substring(0, cutText.length() - 1);
+            }
+            return Text.of(cutText + "...");
+        }
     }
 }

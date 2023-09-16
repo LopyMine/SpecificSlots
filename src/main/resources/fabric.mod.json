@@ -6,9 +6,14 @@
   "description": "Simple configuration of your inventory for items!",
   "authors": [
     "LopyMine [Code]",
-    "TanTanich [Textures]"
+    "TanTanich [Textures]",
+    "",
+    "ThePotatoKing55 and Thanos1716 [2D Blocks texture pack]"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://modrinth.com/mod/specific-slots",
+    "issues": "https://discord.gg/NZzxdkrV4s"
+  },
   "license": "MIT",
   "icon": "assets/specificslots/icon/icon.png",
   "environment": "client",

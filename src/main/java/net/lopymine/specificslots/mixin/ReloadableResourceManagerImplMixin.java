@@ -15,7 +15,7 @@ import java.util.concurrent.*;
 public class ReloadableResourceManagerImplMixin {
 
     @Inject(at = @At("RETURN"), method = "reload")
-    private void render(Executor prepareExecutor, Executor applyExecutor, CompletableFuture<Unit> initialStage, List<ResourcePack> packs, CallbackInfoReturnable<ResourceReload> cir) {
+    private void reload(Executor prepareExecutor, Executor applyExecutor, CompletableFuture<Unit> initialStage, List<ResourcePack> packs, CallbackInfoReturnable<ResourceReload> cir) {
         if (packs.isEmpty()) return;
         SpecificAdditionLoader.load(packs);
     }

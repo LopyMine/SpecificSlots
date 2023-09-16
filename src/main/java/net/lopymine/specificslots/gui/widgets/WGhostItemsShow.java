@@ -12,13 +12,13 @@ import io.github.cottonmc.cotton.gui.widget.WButton;
 import io.github.cottonmc.cotton.gui.widget.data.InputResult;
 import io.github.cottonmc.cotton.gui.widget.icon.TextureIcon;
 
-import net.lopymine.specificslots.utils.DrawUtils;
+import net.lopymine.specificslots.utils.Painters;
 
 public class WGhostItemsShow extends WButton {
     private boolean isOn = false;
 
     public WGhostItemsShow() {
-        super(new TextureIcon(DrawUtils.showItems));
+        super(new TextureIcon(Painters.SHOW_ITEMS));
     }
 
     @Override
@@ -37,12 +37,12 @@ public class WGhostItemsShow extends WButton {
         super.paint(context, x, y, mouseX, mouseY);
         if (this.isOn) setHovered(true);
         if (isHovered() || isFocused()) {
-            this.setIcon(new TextureIcon(DrawUtils.showItemsFocus));
+            this.setIcon(new TextureIcon(Painters.SHOW_ITEMS_FOCUS));
         } else {
-            this.setIcon(new TextureIcon(DrawUtils.showItems));
+            this.setIcon(new TextureIcon(Painters.SHOW_ITEMS));
         }
 
-        ScreenDrawing.texturedRect(context, x + 15, y - 4, 9, 9, (isOn ? DrawUtils.lock : DrawUtils.unlock), 0xFFFFFFFF);
+        ScreenDrawing.texturedRect(context, x + 15, y - 4, 9, 9, (isOn ? Painters.LOCKED : Painters.UNLOCKED), 0xFFFFFFFF);
     }
 
     @Environment(EnvType.CLIENT)

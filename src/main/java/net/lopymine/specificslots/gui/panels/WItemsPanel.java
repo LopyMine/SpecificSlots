@@ -78,7 +78,7 @@ public class WItemsPanel extends WPlainPanel {
         WSwitcher switcherLeft = new WSwitcher(WSwitcher.Type.LEFT)
                 .setOnClick(this::backPage);
 
-        this.add(switcherLeft, searchField.getX() - 5 - WSwitcher.switcherWidth, 5);
+        this.add(switcherLeft, searchField.getX() - 5 - WSwitcher.SWITCHER_WIDTH, 5);
 
         this.add(label, 0, 28, panelWidth, 20);
     }
@@ -150,6 +150,8 @@ public class WItemsPanel extends WPlainPanel {
     }
 
     private List<Item> getSearch(String text, List<Item> items) {
+        label.setText(Text.of("0/" + pageCount));
+        pageIndex = 0;
         List<Item> itemSearch = new ArrayList<>();
 
         if (text.isEmpty()) {

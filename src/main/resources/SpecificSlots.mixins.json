@@ -5,10 +5,12 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [],
   "client": [
+    "ConnectScreenMixin",
     "CreativeScreenMixin",
     "HandledScreenMixin",
     "InGameHudMixin",
     "InventoryScreenMixin",
+    "MinecraftClientMixin",
     "ReloadableResourceManagerImplMixin",
     "ScreenMixin"
   ],

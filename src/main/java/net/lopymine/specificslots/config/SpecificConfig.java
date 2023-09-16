@@ -2,13 +2,17 @@ package net.lopymine.specificslots.config;
 
 import me.shedaniel.math.Color;
 
+import net.lopymine.specificslots.gui.config.SaveConfigGui.ServerInventoryConfig;
 import net.lopymine.specificslots.modmenu.enums.SortMode;
+
+import java.util.*;
 
 public class SpecificConfig {
 
-    private final String WARNING = "PLEASE DON'T EDIT THIS FILE, THE GAME MAY CRASH";
+    private final String WARNING = "PLEASE DONT EDIT THIS FILE, THE GAME MAY CRASH";
     public SortMode sortMode = SortMode.ALL;
     private String inventoryConfig;
+    public Set<ServerInventoryConfig> serverInventoryConfigs = new HashSet<>();
     public boolean renderSlotWithItem = false;
     public boolean enableHighlightWrongSlots = true;
     public boolean enableSpecificShiftSort = true;
@@ -36,4 +40,19 @@ public class SpecificConfig {
         return color_with_alpha.getColor();
     }
 
+    public void addServerInventoryConfig(ServerInventoryConfig serverInventoryConfig) {
+        if(!serverInventoryConfigs.isEmpty()){
+            List<ServerInventoryConfig> configs = new ArrayList<>(serverInventoryConfigs);
+            for(ServerInventoryConfig config : configs){
+                if(Objects.equals(config.ip(), serverInventoryConfig.ip())){
+                    this.removeServerInventoryConfig(config);
+                }
+            }
+        }
+        serverInventoryConfigs.add(serverInventoryConfig);
+    }
+
+    public void removeServerInventoryConfig(ServerInventoryConfig serverInventoryConfig) {
+        serverInventoryConfigs.remove(serverInventoryConfig);
+    }
 }

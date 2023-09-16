@@ -4,6 +4,7 @@ import com.google.gson.*;
 
 import net.lopymine.specificslots.SpecificSlots;
 import net.lopymine.specificslots.config.inventory.*;
+import net.lopymine.specificslots.gui.config.SaveConfigGui.ServerInventoryConfig;
 
 import java.io.*;
 
@@ -88,5 +89,49 @@ public class SpecificConfigManager {
         setConfig(config); //Specific Slots config not found? create a new one!
 
         return config;
+    }
+
+    /**
+     * Sets server inventory config for Specific Slots.
+     * <p>
+     * Automatically sets the config to {@link SpecificSlots#config }.
+     *
+     * @param config       the Specific Slots config
+     * @param serverConfig the server inventory config
+     */
+    public static void addServerInventoryConfig(SpecificConfig config, ServerInventoryConfig serverConfig) {
+        config.addServerInventoryConfig(serverConfig);
+
+        String json = gson.toJson(config, SpecificConfig.class);
+
+        try (FileWriter writer = new FileWriter(PATH_TO_CONFIG + CONFIG_NAME + FILE_FORMAT)) {
+            writer.write(json);
+
+            SpecificSlots.config = config;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Removes server inventory config for Specific Slots.
+     * <p>
+     * Automatically sets the config to {@link SpecificSlots#config }.
+     *
+     * @param config       the Specific Slots config
+     * @param serverConfig the server inventory config
+     */
+    public static void removeServerInventoryConfig(SpecificConfig config, ServerInventoryConfig serverConfig) {
+        config.removeServerInventoryConfig(serverConfig);
+
+        String json = gson.toJson(config, SpecificConfig.class);
+
+        try (FileWriter writer = new FileWriter(PATH_TO_CONFIG + CONFIG_NAME + FILE_FORMAT)) {
+            writer.write(json);
+
+            SpecificSlots.config = config;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

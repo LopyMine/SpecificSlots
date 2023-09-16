@@ -41,7 +41,7 @@ public class InventoryConfigManager {
     public static InventoryConfig read(String name){
         checkConfigsFolder();
 
-        try (FileReader reader = new FileReader(PATH_TO_CONFIG + name)) {
+        try (FileReader reader = new FileReader(PATH_TO_CONFIG + name.replaceAll(JSON_FORMAT, "") + JSON_FORMAT)) {
             return gson.fromJson(reader, InventoryConfig.class).setName(name);
         } catch (IOException e) {
             e.printStackTrace();

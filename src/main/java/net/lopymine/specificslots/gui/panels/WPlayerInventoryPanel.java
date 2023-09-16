@@ -7,7 +7,7 @@ import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.util.*;
 
 import io.github.cottonmc.cotton.gui.GuiDescription;
 import io.github.cottonmc.cotton.gui.client.BackgroundPainter;
@@ -33,22 +33,22 @@ public class WPlayerInventoryPanel extends WPlainPanel {
     public static final Identifier OFFHAND = new Identifier("minecraft", "textures/item/empty_armor_slot_shield.png");
     private static final List<Identifier> list = List.of(HELMET, CHESTPLATE, LEGS, BOOTS, OFFHAND);
     private final MinecraftClient client = MinecraftClient.getInstance();
-    private final SpecificConfig defaultConfig;
+    private final SpecificConfig config;
     private final Set<WSlot> selectedSlots = new HashSet<>();
     private final Screen parent;
     private final WGhostItemsShow showWidget;
     private ArrayList<WSlot> inventory;
     private ArrayList<WSlot> hotBar;
 
-    public WPlayerInventoryPanel(InventoryConfig config, Screen parent, WGhostItemsShow showWidget, SpecificConfig defaultConfig) {
-        this.defaultConfig = defaultConfig;
+    public WPlayerInventoryPanel(InventoryConfig inventoryConfig, Screen parent, WGhostItemsShow showWidget, SpecificConfig config) {
+        this.config = config;
         this.parent = parent;
         this.showWidget = showWidget;
 
-        this.inventory = createSlots(config.getInventory().stream().flatMap(s -> Stream.of(ItemUtils.getItemByName(s))).toList(), 0);
+        this.inventory = createSlots(inventoryConfig.getInventory().stream().flatMap(s -> Stream.of(ItemUtils.getItemByName(s))).toList(), 0);
         this.createInventorySlots();
 
-        this.hotBar = createSlots(config.getHotBar().stream().flatMap(s -> Stream.of(ItemUtils.getItemByName(s))).toList(), 27);
+        this.hotBar = createSlots(inventoryConfig.getHotBar().stream().flatMap(s -> Stream.of(ItemUtils.getItemByName(s))).toList(), 27);
         this.createHotBarSlots();
 
         this.setBackgroundPainter(BackgroundPainter.VANILLA);
@@ -66,7 +66,7 @@ public class WPlayerInventoryPanel extends WPlainPanel {
         int h = 7;
         int d = 25;
 
-        DrawUtils.drawPlayerBackground(context, x + d, y + h, shouldRenderInDarkMode());
+        Painters.drawPlayerBackground(context, x + d, y + h, shouldRenderInDarkMode());
 
         int i = 51;
         int l = 75;
@@ -111,7 +111,7 @@ public class WPlayerInventoryPanel extends WPlainPanel {
                     }
                 }
             }.setItem(item).setTexture(ShadowItems.getTexture(item))
-                    .setDepth(defaultConfig.depth)
+                    .setDepth(config.depth)
                     .setShowWidget(showWidget);
 
             list.add(slot);
@@ -167,18 +167,14 @@ public class WPlayerInventoryPanel extends WPlainPanel {
 
     private void createWidgets() {
         WButton saveConfig = new WButton(Text.translatable("specific_slots.buttons.save"))
-                .setOnClick(() ->
-                        client.setScreen(new SpecificScreen(new SaveConfigGui(client.currentScreen, inventory, hotBar, defaultConfig)))
-                );
+                .setOnClick(() -> client.setScreen(new SpecificScreen(new SaveConfigGui(client.currentScreen, inventory, hotBar, config))));
         this.add(saveConfig, 82, 35, 85, 20);
 
         WButton loadConfig = new WButton(Text.translatable("specific_slots.buttons.load"))
-                .setOnClick(() ->
-                        client.setScreen(new SpecificScreen(new LoadConfigGui(client.currentScreen, parent, defaultConfig)))
-                );
+                .setOnClick(() -> client.setScreen(new SpecificScreen(new LoadConfigGui(client.currentScreen, parent, config))));
         this.add(loadConfig, 82, 7, 85, 20);
 
-        WButton importInventory = new WButton(new TextureIcon(DrawUtils.importInventory)) {
+        WButton importInventory = new WButton(new TextureIcon(Painters.IMPORT_INVENTORY)) {
             @Override
             public void addTooltip(TooltipBuilder tooltip) {
                 tooltip.add(Text.translatable("specific_slots.buttons.load_from_inventory"));
@@ -207,6 +203,18 @@ public class WPlayerInventoryPanel extends WPlainPanel {
         });
         this.add(importInventory, 100, 60, 20, 20);
 
+
+        TextureIcon icon = new TextureIcon(config.isDarkMode ? Painters.CLEAR_CONFIG_DARK : Painters.CLEAR_CONFIG);
+        WButton clearConfig = new WButton(icon){
+            @Override
+            public void addTooltip(TooltipBuilder tooltip) {
+                tooltip.add(Text.translatable("specific_slots.clear_config").formatted(Formatting.RED));
+            }
+
+        }.setOnClick(this::clearSlotsPanel);
+
+        this.add(clearConfig, 125, 60, 20, 20);
+
         int y = 0;
         int x = 0;
 
@@ -216,7 +224,7 @@ public class WPlayerInventoryPanel extends WPlainPanel {
                     .setTexture(identifier)
                     .setArmor(true)
                     .setItem(Items.AIR)
-                    .setDepth(defaultConfig.depth)
+                    .setDepth(config.depth)
                     .setShowWidget(this.showWidget);
             this.add(setClickAction(slot), 7 + x, 7 + y);
 
@@ -257,5 +265,16 @@ public class WPlayerInventoryPanel extends WPlainPanel {
 
     public void removeSelectedSlot(WSlot select) {
         this.selectedSlots.remove(select);
+    }
+
+    public void clearSlotsPanel() {
+        clearSelecting();
+        selectedSlots.clear();
+        for (WSlot slot : inventory) {
+            slot.resetSlot();
+        }
+        for (WSlot slot : hotBar) {
+            slot.resetSlot();
+        }
     }
 }

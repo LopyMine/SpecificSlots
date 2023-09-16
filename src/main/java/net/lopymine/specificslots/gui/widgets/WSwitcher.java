@@ -11,13 +11,13 @@ import io.github.cottonmc.cotton.gui.widget.WWidget;
 import io.github.cottonmc.cotton.gui.widget.data.InputResult;
 
 import net.lopymine.specificslots.SpecificSlots;
-import net.lopymine.specificslots.utils.DrawUtils;
+import net.lopymine.specificslots.utils.Painters;
 
 import org.jetbrains.annotations.Nullable;
 
 public class WSwitcher extends WWidget {
-    public static final int switcherWidth = 13;
-    public static final int switcherHeight = 22;
+    public static final int SWITCHER_WIDTH = 13;
+    public static final int SWITCHER_HEIGHT = 22;
     public static final Identifier VANILLA_TEXTURE = new Identifier("textures/gui/resource_packs.png");
     public static final Identifier DARK_TEXTURE = new Identifier(SpecificSlots.ID(), "textures/gui/switchers/resource_packs_dark.png");
     private final Type type;
@@ -29,7 +29,7 @@ public class WSwitcher extends WWidget {
 
     @Override
     public void setSize(int x, int y) {
-        super.setSize(switcherWidth, switcherHeight);
+        super.setSize(SWITCHER_WIDTH, SWITCHER_HEIGHT);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class WSwitcher extends WWidget {
         float buttonTop = (isHovered() || isFocused() ? 37 : i) * px;
         float buttonWidth = 14 * px;
         float buttonHeight = 22 * px;
-        ScreenDrawing.texturedRect(context, x, y, 14, 22, DrawUtils.getTexture(DARK_TEXTURE, VANILLA_TEXTURE, shouldRenderInDarkMode()), buttonLeft, buttonTop, buttonLeft + buttonWidth, buttonTop + buttonHeight, 0xFFFFFFFF);
+        ScreenDrawing.texturedRect(context, x, y, 14, 22, Painters.getTexture(DARK_TEXTURE, VANILLA_TEXTURE, shouldRenderInDarkMode()), buttonLeft, buttonTop, buttonLeft + buttonWidth, buttonTop + buttonHeight, 0xFFFFFFFF);
     }
 
     @Override

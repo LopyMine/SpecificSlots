@@ -4,7 +4,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.sound.PositionedSoundInstance;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 
@@ -19,8 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class WSimpleItemButton extends WWidget {
     private boolean dragging = false;
-    private final Item item;
-    private final WItem icon;
+    private Item item;
     private int dragX = 0;
     private int dragY = 0;
     @Nullable
@@ -28,19 +27,17 @@ public class WSimpleItemButton extends WWidget {
 
     public WSimpleItemButton(Item item) {
         this.item = item;
-        this.icon = new WItem(new ItemStack(item));
     }
 
     @Environment(EnvType.CLIENT)
     @Override
     public void paint(DrawContext context, int x, int y, int mouseX, int mouseY) {
-        icon.paint(context, x, y, mouseX, mouseY);
+        context.drawItem(item.getDefaultStack(), x, y);
 
-        if (dragging)
-            icon.paint(context, this.dragX + x, this.dragY + y, mouseX, mouseY);
+        if (dragging) context.drawItem(item.getDefaultStack(), this.dragX + x, this.dragY + y);
 
         if (isHovered() || isFocused())
-            HandledScreen.drawSlotHighlight(context, x + 1, y + 1, 0);
+            HandledScreen.drawSlotHighlight(context, x, y, 0);
     }
 
     @Environment(EnvType.CLIENT)
@@ -97,4 +94,11 @@ public class WSimpleItemButton extends WWidget {
         return this;
     }
 
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Item getItem() {
+        return item;
+    }
 }

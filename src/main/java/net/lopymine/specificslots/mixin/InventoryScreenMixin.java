@@ -21,7 +21,7 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
     }
 
     @Inject(at = @At("HEAD"), method = "onMouseClick(Lnet/minecraft/screen/slot/Slot;IILnet/minecraft/screen/slot/SlotActionType;)V", cancellable = true)
-    private void mouseClick(Slot slot, int slotId, int button, SlotActionType actionType, CallbackInfo ci) {
+    private void onMouseClick(Slot slot, int slotId, int button, SlotActionType actionType, CallbackInfo ci) {
         if(this instanceof IShiftClickableScreen shiftClickableScreen){
             shiftClickableScreen.setSortMode(SortMode.INVENTORY);
             if(shiftClickableScreen.shiftClick(slot, slotId, button, actionType, false)) ci.cancel();

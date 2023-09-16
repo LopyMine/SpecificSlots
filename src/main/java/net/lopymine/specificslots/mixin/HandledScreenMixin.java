@@ -18,9 +18,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
 
+import net.lopymine.specificslots.SpecificSlots;
 import net.lopymine.specificslots.autosort.*;
-import net.lopymine.specificslots.config.*;
-import net.lopymine.specificslots.config.inventory.*;
+import net.lopymine.specificslots.config.SpecificConfig;
+import net.lopymine.specificslots.config.inventory.InventoryConfig;
 import net.lopymine.specificslots.gui.SpecificGui;
 import net.lopymine.specificslots.gui.screen.SpecificScreen;
 import net.lopymine.specificslots.gui.tooltip.WarningTooltipData;
@@ -53,9 +54,9 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
     @Shadow
     protected int backgroundWidth;
     @Unique
-    private final SpecificConfig config = SpecificConfigManager.getConfig();
+    private final SpecificConfig config = SpecificSlots.config;
     @Unique
-    private InventoryConfig inventoryConfig = InventoryConfigManager.readFromConfig(config);
+    private InventoryConfig inventoryConfig = SpecificSlots.inventoryConfig;
     @Unique
     private SortMode sortMode = SortMode.CONTAINER;
     @Unique
@@ -281,8 +282,10 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
             }
 
             ItemStack toStack = playerInventory.get(i);
-            if (!toStack.isEmpty() & ItemStack.canCombine(fromStack, toStack) && toStack.getCount() == toStack.getMaxCount())
+            if (!toStack.isEmpty() && (!equalsNbt(fromStack, toStack) || toStack.getCount() == toStack.getMaxCount())){
                 continue;
+            }
+
 
             swapManager.swap(slotId, i + startIndex);
             return true;
@@ -292,6 +295,12 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
             return sortableShiftClick(slot, slotId, actionType, isContainer, configInventory, playerInventory, startIndex);
 
         return false;
+    }
+
+    public boolean equalsNbt(ItemStack stack, ItemStack otherStack) {
+        boolean equals = Objects.equals(stack.getNbt(), otherStack.getNbt());
+        System.out.println(equals);
+        return equals;
     }
 
     @Unique

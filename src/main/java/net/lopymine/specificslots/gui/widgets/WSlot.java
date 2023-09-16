@@ -14,7 +14,7 @@ import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
 import io.github.cottonmc.cotton.gui.widget.WWidget;
 import io.github.cottonmc.cotton.gui.widget.data.InputResult;
 
-import net.lopymine.specificslots.utils.DrawUtils;
+import net.lopymine.specificslots.utils.Painters;
 
 import java.util.function.Consumer;
 import org.jetbrains.annotations.*;
@@ -49,11 +49,11 @@ public class WSlot extends WWidget {
         if (button == 1) {
             this.resetSlot();
             this.onToggle(false);
-            return InputResult.PROCESSED;
+        } else {
+            this.isOn = !this.isOn;
+            this.onToggle(this.isOn);
         }
 
-        this.isOn = !this.isOn;
-        this.onToggle(this.isOn);
         return InputResult.PROCESSED;
     }
 
@@ -71,10 +71,10 @@ public class WSlot extends WWidget {
     @Environment(EnvType.CLIENT)
     @Override
     public void paint(DrawContext context, int x, int y, int mouseX, int mouseY) {
-        DrawUtils.drawSlot(context, x, y, shouldRenderInDarkMode());
+        Painters.drawSlot(context, x, y, shouldRenderInDarkMode());
 
-        if (isOn || isFocused() && !isArmor) {
-            ScreenDrawing.texturedRect(context, x, y, 18, 18, DrawUtils.selectedSlot, 0xFFFFFFFF);
+        if ((isOn || isFocused()) && !isArmor) {
+            ScreenDrawing.texturedRect(context, x, y, 18, 18, Painters.selectedSlot, 0xFFFFFFFF);
         }
 
         if (showWidget != null) {
