@@ -21,3 +21,4 @@
 #
 Thanks ThePotatoKing55 and Thanos1716 for 2D Blocks texture pack! 
 You can download their resource pack [here](https://github.com/Thanos1716/2d-block-item-resourcepack/releases)
+ 
