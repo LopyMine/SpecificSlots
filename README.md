@@ -16,7 +16,7 @@ You can use it to sort your inventory, create your own items sorting layout, and
 <details>
 
   <p> All configs are located in the ".minecraft/config/specific_slots/" folder. </p>
-  <p> Detailed information can be found in the "Gallery" tab. </p>
+  <p> Detailed information can be found in the "Wiki" tab. </p>
 </details>
 
 ### Supported Versions
