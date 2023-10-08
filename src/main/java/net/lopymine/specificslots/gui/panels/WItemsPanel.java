@@ -1,15 +1,21 @@
 package net.lopymine.specificslots.gui.panels;
 
+import io.github.cottonmc.cotton.gui.widget.WLabel;
+import io.github.cottonmc.cotton.gui.widget.WPlainPanel;
+import io.github.cottonmc.cotton.gui.widget.WTextField;
+import io.github.cottonmc.cotton.gui.widget.WWidget;
+import io.github.cottonmc.cotton.gui.widget.data.HorizontalAlignment;
+import io.github.cottonmc.cotton.gui.widget.data.VerticalAlignment;
+import net.lopymine.specificslots.gui.widgets.WSimpleItemButton;
+import net.lopymine.specificslots.gui.widgets.WSlot;
+import net.lopymine.specificslots.gui.widgets.WSwitcher;
 import net.minecraft.item.Item;
 import net.minecraft.text.Text;
 
-import io.github.cottonmc.cotton.gui.widget.*;
-import io.github.cottonmc.cotton.gui.widget.data.*;
-
-import net.lopymine.specificslots.gui.widgets.*;
-import net.lopymine.specificslots.textures.ShadowItems;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class WItemsPanel extends WPlainPanel {
     private final int panelWidth;
@@ -128,9 +134,7 @@ public class WItemsPanel extends WPlainPanel {
                     for (WSlot slot : select) {
                         if (slot.isArmor()) continue;
 
-                        slot.setTexture(ShadowItems.getTexture(item))
-                                .setItem(item)
-                                .setToggle(false);
+                        slot.setItem(item).setToggle(false);
 
                         playerPanel.removeSelectedSlot(slot);
                     }

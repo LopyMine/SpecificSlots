@@ -8,18 +8,20 @@ import net.lopymine.specificslots.modmenu.enums.SortMode;
 import java.util.*;
 
 public class SpecificConfig {
-
     private final String WARNING = "PLEASE DONT EDIT THIS FILE, THE GAME MAY CRASH";
     public SortMode sortMode = SortMode.ALL;
     private String inventoryConfig;
     public Set<ServerInventoryConfig> serverInventoryConfigs = new HashSet<>();
-    public boolean renderSlotWithItem = false;
     public boolean enableHighlightWrongSlots = true;
     public boolean enableSpecificShiftSort = true;
     public boolean isDarkMode = false;
-    public Integer color = 16711680;
-    public Integer alpha = 30;
+    public Integer wrongHighlightColor = 16711680;
+    public Integer emptyHighlightColor = 16711935;
+    public Integer wrongHighlightAlpha = 30;
+    public Integer emptyHighlightAlpha = 30;
     public Integer depth = 1;
+
+    public SpecificConfig() {}
 
     public SpecificConfig(String config) {
         if (config == null) throw new NullPointerException("Null config");
@@ -34,9 +36,15 @@ public class SpecificConfig {
         this.inventoryConfig = defaultConfig;
     }
 
-    public Integer getColor() {
-        Color color = Color.ofTransparent(this.color);
-        Color color_with_alpha = Color.ofRGBA(color.getRed(), color.getGreen(), color.getBlue(), (int) ((float) alpha / 100 * 255));
+    public Integer getWrongHighlightColor() {
+        Color color = Color.ofTransparent(this.wrongHighlightColor);
+        Color color_with_alpha = Color.ofRGBA(color.getRed(), color.getGreen(), color.getBlue(), (int) ((float) wrongHighlightAlpha / 100 * 255));
+        return color_with_alpha.getColor();
+    }
+
+    public Integer getEmptyHighlightColor() {
+        Color color = Color.ofTransparent(this.emptyHighlightColor);
+        Color color_with_alpha = Color.ofRGBA(color.getRed(), color.getGreen(), color.getBlue(), (int) ((float) emptyHighlightAlpha / 100 * 255));
         return color_with_alpha.getColor();
     }
 

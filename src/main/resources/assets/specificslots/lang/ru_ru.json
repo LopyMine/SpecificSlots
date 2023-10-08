@@ -1,0 +1,40 @@
+{
+  "modmenu.descriptionTranslation.specific-slots": "Лёгкая и быстрая конфигурация вашего инвентаря под предметы!",
+
+  "specific_slots.file_name": "Название файла",
+  "specific_slots.load_config": "Загрузить конфиг.",
+  "specific_slots.save_config": "Сохранить конфиг.",
+  "specific_slots.delete_config": "Удалить конфиг.",
+  "specific_slots.search": "Поиск",
+  "specific_slots.empty_search": "Ничего...",
+  "specific_slots.warning_button_tooltip.text1": "Необходим ",
+  "specific_slots.warning_button_tooltip.text2": " предмет, но предоставлен ",
+  "specific_slots.warning_button_tooltip.text3": " предмет. [%s]",
+  "specific_slots.clear_config": "Очистить конфиг.",
+  "specific_slots.pin_config.text1": "Автоматически загружать конфигурацию",
+  "specific_slots.pin_config.text2": "при входе на %s",
+
+  "specific_slots.mod_menu.dark_mode": "Тёмный режим",
+  "specific_slots.mod_menu.shadow_items": "Фантомные предметы",
+  "specific_slots.mod_menu.shadow_items.tooltip": "Отображать фантомные предметы с предметом в их слоте.",
+  "specific_slots.mod_menu.depth": "Глубина",
+  "specific_slots.mod_menu.wrong_slots": "Неправильные слоты",
+  "specific_slots.mod_menu.highlight_wrong_slots": "Подсветка неправильных слотов",
+  "specific_slots.mod_menu.highlight_wrong_slots.color": "Цвет подсветки",
+  "specific_slots.mod_menu.highlight_wrong_slots.alpha": "Прозрачность подсветки",
+  "specific_slots.mod_menu.sort": "Сортировка",
+  "specific_slots.mod_menu.specific_shift_sort": "Включить shift сортировку Specific Slots",
+  "specific_slots.mod_menu.specific_shift_sort.tooltip": "Для использования нажмите на слот правой кнопкой мыши и зажмите клавишу Shift.",
+  "specific_slots.mod_menu.sort_mode": "Режим сортировки",
+  "specific_slots.no_cloth_config.title": "Чтобы настроить Specific Slots, установите мод Cloth Config.",
+
+  "specific_slots.mod_menu.sort_mode.all": "Везде",
+  "specific_slots.mod_menu.sort_mode.inventory": "Инвентарь",
+  "specific_slots.mod_menu.sort_mode.container": "Хранилища",
+  "specific_slots.mod_menu.sort_mode.off": "Выкл",
+
+  "specific_slots.buttons.auto_sort": "Сортировка по конфигу\n§6Бета",
+  "specific_slots.buttons.load_from_inventory": "Загрузить из инвентаря",
+  "specific_slots.buttons.load": "Загрузить",
+  "specific_slots.buttons.save": "Сохранить"
+}

@@ -15,7 +15,6 @@ import net.lopymine.specificslots.SpecificSlots;
 import net.lopymine.specificslots.config.*;
 import net.lopymine.specificslots.config.inventory.InventoryConfig;
 import net.lopymine.specificslots.gui.panels.*;
-import net.lopymine.specificslots.gui.widgets.WGhostItemsShow;
 import net.lopymine.specificslots.utils.ItemUtils;
 import net.lopymine.specificslots.utils.mixins.ISpecificScreen;
 
@@ -50,10 +49,7 @@ public class SpecificGui extends LightweightGuiDescription {
         back.setOnClick(() -> updateScreenConfigAndOpen(parent, client));
         root.add(back, 5, h - 25, 80, 20);
 
-        WGhostItemsShow itemsShow = new WGhostItemsShow();
-        root.add(itemsShow, 87, h - 25, 20, 20);
-
-        WPlayerInventoryPanel playerInventory = new WPlayerInventoryPanel(config, parent, itemsShow, defaultConfig);
+        WPlayerInventoryPanel playerInventory = new WPlayerInventoryPanel(config, parent, defaultConfig);
         root.add(playerInventory, w / 2 - 88, h / 2 - 83);
 
         WItemsPanel itemsPanel = new WItemsPanel(w, h, playerInventory, new ArrayList<>(ItemUtils.getMinecraftItems()));

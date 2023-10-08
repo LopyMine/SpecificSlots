@@ -69,8 +69,6 @@ public class SpecificConfigManager {
         return InventoryConfigManager.readFromConfig(getConfig());
     }
 
-
-
     /**
      * Gets Specific Slots config.
      * <p> If Specific Slots config is not found, it will return and create a new config.

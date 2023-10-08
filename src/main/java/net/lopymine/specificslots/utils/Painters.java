@@ -20,11 +20,7 @@ public class Painters {
     public static final Identifier DARK_PLAYER_BACKGROUND = new Identifier(SpecificSlots.ID(),"textures/gui/inventory/inventory_dark.png");
     public static final Identifier DARK_SLOT = new Identifier(SpecificSlots.ID, "textures/gui/slot/bundle_dark.png");
     public static final Identifier selectedSlot = new Identifier(SpecificSlots.ID, "textures/gui/slot/slot_select.png");
-    public static final Identifier SHOW_ITEMS_FOCUS = new Identifier(SpecificSlots.ID, "textures/gui/buttons/show_items_focus.png");
-    public static final Identifier SHOW_ITEMS = new Identifier(SpecificSlots.ID, "textures/gui/buttons/show_items.png");
     public static final Identifier IMPORT_INVENTORY = new Identifier(SpecificSlots.ID, "textures/gui/buttons/import_inventory.png");
-    public static final Identifier LOCKED = new Identifier(SpecificSlots.ID, "textures/gui/buttons/locked.png");
-    public static final Identifier UNLOCKED = new Identifier(SpecificSlots.ID, "textures/gui/buttons/unlocked.png");
     public static final Identifier CLEAR_CONFIG = new Identifier(SpecificSlots.ID, "textures/gui/buttons/clear_config.png");
     public static final Identifier CLEAR_CONFIG_DARK = new Identifier(SpecificSlots.ID, "textures/gui/buttons/clear_config_dark.png");
     public static final Identifier PIN = new Identifier(SpecificSlots.ID(), "textures/gui/buttons/pin.png");

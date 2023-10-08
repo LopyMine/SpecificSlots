@@ -6,7 +6,6 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
 
 import net.fabricmc.api.*;
 
@@ -21,13 +20,11 @@ import org.jetbrains.annotations.*;
 
 public class WSlot extends WWidget {
     private final int index;
-    private boolean isArmor = false;
+    private ArmorSlot.ArmorSlotType armorSlotType = null;
     private boolean isOn = false;
     @Nullable
     private Consumer<Boolean> onToggle = null;
     @Nullable
-    private Identifier texture = null;
-    private WGhostItemsShow showWidget;
     private Item item = Items.AIR;
     private int depth = 1;
 
@@ -43,7 +40,7 @@ public class WSlot extends WWidget {
     @Environment(EnvType.CLIENT)
     @Override
     public InputResult onClick(int x, int y, int button) {
-        if (isArmor) return InputResult.IGNORED;
+        if (isArmor()) return InputResult.IGNORED;
         MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 
         if (button == 1) {
@@ -58,14 +55,13 @@ public class WSlot extends WWidget {
     }
 
     public void resetSlot() {
-        this.texture = null;
         this.item = Items.AIR;
         this.isOn = false;
     }
 
     @Override
     public boolean canFocus() {
-        return !isArmor;
+        return !isArmor();
     }
 
     @Environment(EnvType.CLIENT)
@@ -73,18 +69,16 @@ public class WSlot extends WWidget {
     public void paint(DrawContext context, int x, int y, int mouseX, int mouseY) {
         Painters.drawSlot(context, x, y, shouldRenderInDarkMode());
 
-        if ((isOn || isFocused()) && !isArmor) {
+        if ((isOn || isFocused()) && !isArmor()) {
             ScreenDrawing.texturedRect(context, x, y, 18, 18, Painters.selectedSlot, 0xFFFFFFFF);
         }
 
-        if (showWidget != null) {
-            if (showWidget.isHovered() && !isArmor) {
-                context.drawItem(item.getDefaultStack(), x + 1, y + 1);
-            } else if (texture != null) {
-                for (int i = 0; i < depth; i++) {
-                    ScreenDrawing.texturedRect(context, x + 1, y + 1, 16, 16, texture, 0xFFFFFFFF);
-                }
+        if (isArmor()) {
+            for (int i = 0; i < depth; i++) {
+                ScreenDrawing.texturedRect(context, x + 1, y + 1, 16, 16, ArmorSlot.getTexture(this.armorSlotType), 0xFFFFFFFF);
             }
+        } else if (item != null) {
+            context.drawItem(item.getDefaultStack(), x + 1, y + 1);
         }
 
         if (isHovered()) {
@@ -97,13 +91,13 @@ public class WSlot extends WWidget {
         return this;
     }
 
-    public WSlot setArmor(boolean armor) {
-        this.isArmor = armor;
+    public WSlot setArmorType(ArmorSlot.ArmorSlotType type) {
+        this.armorSlotType = type;
         return this;
     }
 
     public boolean isArmor() {
-        return isArmor;
+        return this.armorSlotType != null;
     }
 
     public WSlot setToggle(boolean on) {
@@ -126,32 +120,15 @@ public class WSlot extends WWidget {
         }
     }
 
-    public WSlot setTexture(@Nullable Identifier texture) {
-        this.texture = texture;
-        return this;
-    }
-
-    @Nullable
-    public Identifier getTexture() {
-        return texture;
-    }
-
     public WSlot setItem(Item item) {
-        this.item = item;
+        if (!isArmor()) {
+            this.item = item;
+        }
         return this;
     }
 
     public Item getItem() {
         return item;
-    }
-
-    public WSlot setShowWidget(@NotNull WGhostItemsShow showWidget) {
-        this.showWidget = showWidget;
-        return this;
-    }
-
-    public WGhostItemsShow getShowWidget() {
-        return showWidget;
     }
 
     public int getIndex() {

@@ -1,5 +1,11 @@
 package net.lopymine.specificslots.gui.widgets;
 
+import io.github.cottonmc.cotton.gui.widget.TooltipBuilder;
+import io.github.cottonmc.cotton.gui.widget.WPanel;
+import io.github.cottonmc.cotton.gui.widget.WWidget;
+import io.github.cottonmc.cotton.gui.widget.data.InputResult;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -7,14 +13,6 @@ import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.item.Item;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-
-import net.fabricmc.api.*;
-
-import io.github.cottonmc.cotton.gui.widget.*;
-import io.github.cottonmc.cotton.gui.widget.data.InputResult;
-
-import net.lopymine.specificslots.textures.ShadowItems;
-
 import org.jetbrains.annotations.Nullable;
 
 public class WSimpleItemButton extends WWidget {
@@ -80,8 +78,7 @@ public class WSimpleItemButton extends WWidget {
         if (hit == null) return InputResult.IGNORED;
 
         if (hit instanceof WSlot slot) {
-            slot.setTexture(ShadowItems.getTexture(this.item))
-                    .setItem(this.item);
+            slot.setItem(this.item);
 
             return InputResult.PROCESSED;
         }
