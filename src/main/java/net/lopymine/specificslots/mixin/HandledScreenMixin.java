@@ -157,7 +157,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
             return;
         }
 
-        if (!slotInfo.hasInventoryItem() && slotInfo.hasConfigItem()) {
+        if (!slotInfo.hasInventoryItem() && slotInfo.hasConfigItem() && config.enableHighlightEmptySlots) {
             context.fill(x, y, x + 16, y + 16, config.getEmptyHighlightColor());
             context.drawItem(configItem.getDefaultStack(), x, y);
         } else if (slotInfo.isWrong() && config.enableHighlightWrongSlots) {
@@ -166,6 +166,8 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
                 warningWidget.data.add(data);
             }
             context.fill(x, y, x + 16, y + 16, config.getWrongHighlightColor());
+        } else if (slotInfo.getConfigItem() == slotInfo.getInventoryItem() && slotInfo.getConfigItem() != Items.AIR && config.enableHighlightRightSlots) {
+            context.fill(x, y, x + 16, y + 16, config.getRightHighlightColor());
         }
     }
 

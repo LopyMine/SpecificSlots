@@ -9,6 +9,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -61,6 +62,8 @@ public class InGameHudMixin {
             context.drawItem(configItem.getDefaultStack(), x, y);
         } else if (slotInfo.isWrong() && config.enableHighlightWrongSlots) {
             context.fill(x, y, x + 16, y + 16, config.getWrongHighlightColor());
+        } else if (slotInfo.getConfigItem() == slotInfo.getInventoryItem() && slotInfo.getConfigItem() != Items.AIR && config.enableHighlightRightSlots) {
+            context.fill(x, y, x + 16, y + 16, config.getRightHighlightColor());
         }
     }
 }

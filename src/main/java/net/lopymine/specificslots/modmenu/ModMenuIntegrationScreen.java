@@ -28,19 +28,19 @@ public class ModMenuIntegrationScreen {
 
         ConfigCategory wrongSlots = configBuilder.getOrCreateCategory(Text.translatable("specific_slots.mod_menu.wrong_slots"));
 
-        wrongSlots.addEntry(entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.highlight_wrong_slots"), config.enableHighlightWrongSlots)
+        SubCategoryBuilder wrongSlotsColor = entryBuilder.startSubCategory(Text.translatable("specific_slots.mod_menu.wrong_slots.wrong_subcategory"));
+
+        wrongSlotsColor.add(0, entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.highlight_wrong_slots.toggle"), config.enableHighlightWrongSlots)
                 .setSaveConsumer(bl -> config.enableHighlightWrongSlots = bl)
                 .setDefaultValue(defaultConfig.enableHighlightWrongSlots)
                 .build());
 
-        SubCategoryBuilder wrongSlotsColor = entryBuilder.startSubCategory(Text.translatable("specific_slots.mod_menu.wrong_slots.wrong_subcategory"));
-
-        wrongSlotsColor.add(0, entryBuilder.startColorField(Text.translatable("specific_slots.mod_menu.highlight_wrong_slots.color"), config.wrongHighlightColor)
+        wrongSlotsColor.add(1, entryBuilder.startColorField(Text.translatable("specific_slots.mod_menu.highlight_wrong_slots.color"), config.wrongHighlightColor)
                 .setSaveConsumer(color -> config.wrongHighlightColor = color)
                 .setDefaultValue(defaultConfig.wrongHighlightColor)
                 .build());
 
-        wrongSlotsColor.add(1, entryBuilder.startIntSlider(Text.translatable("specific_slots.mod_menu.highlight_wrong_slots.alpha"), config.wrongHighlightAlpha, 0, 100)
+        wrongSlotsColor.add(2, entryBuilder.startIntSlider(Text.translatable("specific_slots.mod_menu.highlight_wrong_slots.alpha"), config.wrongHighlightAlpha, 0, 100)
                 .setSaveConsumer(alpha -> config.wrongHighlightAlpha = alpha)
                 .setDefaultValue(defaultConfig.wrongHighlightAlpha)
                 .build());
@@ -49,17 +49,41 @@ public class ModMenuIntegrationScreen {
 
         SubCategoryBuilder emptySlotsColor = entryBuilder.startSubCategory(Text.translatable("specific_slots.mod_menu.wrong_slots.empty_subcategory"));
 
-        emptySlotsColor.add(0, entryBuilder.startColorField(Text.translatable("specific_slots.mod_menu.highlight_empty_slots.color"), config.emptyHighlightColor)
+        emptySlotsColor.add(0, entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.highlight_empty_slots.toggle"), config.enableHighlightWrongSlots)
+                .setSaveConsumer(bl -> config.enableHighlightWrongSlots = bl)
+                .setDefaultValue(defaultConfig.enableHighlightWrongSlots)
+                .build());
+
+        emptySlotsColor.add(1, entryBuilder.startColorField(Text.translatable("specific_slots.mod_menu.highlight_empty_slots.color"), config.emptyHighlightColor)
                 .setSaveConsumer(color -> config.emptyHighlightColor = color)
                 .setDefaultValue(defaultConfig.emptyHighlightColor)
                 .build());
 
-        emptySlotsColor.add(1, entryBuilder.startIntSlider(Text.translatable("specific_slots.mod_menu.highlight_empty_slots.alpha"), config.emptyHighlightAlpha, 0, 100)
+        emptySlotsColor.add(2, entryBuilder.startIntSlider(Text.translatable("specific_slots.mod_menu.highlight_empty_slots.alpha"), config.emptyHighlightAlpha, 0, 100)
                 .setSaveConsumer(alpha -> config.emptyHighlightAlpha = alpha)
                 .setDefaultValue(defaultConfig.emptyHighlightAlpha)
                 .build());
 
         wrongSlots.addEntry(emptySlotsColor.build());
+
+        SubCategoryBuilder rightSlotsColor = entryBuilder.startSubCategory(Text.translatable("specific_slots.mod_menu.wrong_slots.right_subcategory"));
+
+        rightSlotsColor.add(0, entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.highlight_right_slots.toggle"), config.enableHighlightRightSlots)
+                .setSaveConsumer(bl -> config.enableHighlightRightSlots = bl)
+                .setDefaultValue(defaultConfig.enableHighlightRightSlots)
+                .build());
+
+        rightSlotsColor.add(1, entryBuilder.startColorField(Text.translatable("specific_slots.mod_menu.highlight_right_slots.color"), config.rightHighlightColor)
+                .setSaveConsumer(color -> config.rightHighlightColor = color)
+                .setDefaultValue(defaultConfig.rightHighlightColor)
+                .build());
+
+        rightSlotsColor.add(2, entryBuilder.startIntSlider(Text.translatable("specific_slots.mod_menu.highlight_right_slots.alpha"), config.rightHighlightAlpha, 0, 100)
+                .setSaveConsumer(alpha -> config.rightHighlightAlpha = alpha)
+                .setDefaultValue(defaultConfig.rightHighlightAlpha)
+                .build());
+
+        wrongSlots.addEntry(rightSlotsColor.build());
 
         ConfigCategory sorting = configBuilder.getOrCreateCategory(Text.translatable("specific_slots.mod_menu.sort"));
 

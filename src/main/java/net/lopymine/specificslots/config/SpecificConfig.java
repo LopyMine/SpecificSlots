@@ -12,13 +12,17 @@ public class SpecificConfig {
     public SortMode sortMode = SortMode.ALL;
     private String inventoryConfig;
     public Set<ServerInventoryConfig> serverInventoryConfigs = new HashSet<>();
-    public boolean enableHighlightWrongSlots = true;
     public boolean enableSpecificShiftSort = true;
     public boolean isDarkMode = false;
+    public boolean enableHighlightWrongSlots = true;
     public Integer wrongHighlightColor = 16711680;
-    public Integer emptyHighlightColor = 16711935;
     public Integer wrongHighlightAlpha = 30;
+    public boolean enableHighlightEmptySlots = true;
+    public Integer emptyHighlightColor = 16711935;
     public Integer emptyHighlightAlpha = 30;
+    public boolean enableHighlightRightSlots = false;
+    public Integer rightHighlightColor = 8421631;
+    public Integer rightHighlightAlpha = 30;
 
     public SpecificConfig() {}
 
@@ -44,6 +48,12 @@ public class SpecificConfig {
     public Integer getEmptyHighlightColor() {
         Color color = Color.ofTransparent(this.emptyHighlightColor);
         Color color_with_alpha = Color.ofRGBA(color.getRed(), color.getGreen(), color.getBlue(), (int) ((float) emptyHighlightAlpha / 100 * 255));
+        return color_with_alpha.getColor();
+    }
+
+    public Integer getRightHighlightColor() {
+        Color color = Color.ofTransparent(this.rightHighlightColor);
+        Color color_with_alpha = Color.ofRGBA(color.getRed(), color.getGreen(), color.getBlue(), (int) ((float) rightHighlightAlpha / 100 * 255));
         return color_with_alpha.getColor();
     }
 
