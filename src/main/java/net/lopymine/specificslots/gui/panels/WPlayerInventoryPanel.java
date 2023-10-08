@@ -99,7 +99,7 @@ public class WPlayerInventoryPanel extends WPlainPanel {
                         removeSelectedSlot(slot);
                     }
                 }
-            }.setItem(item).setDepth(config.depth);
+            }.setItem(item);
 
             list.add(slot);
         }
@@ -208,8 +208,7 @@ public class WPlayerInventoryPanel extends WPlainPanel {
         for (ArmorSlot.ArmorSlotType type : ArmorSlot.ArmorSlotType.values()) {
 
             WSlot slot = new WSlot(-1)
-                    .setArmorType(type)
-                    .setDepth(config.depth);
+                    .setArmorType(type);
             this.add(setClickAction(slot), 7 + x, 7 + y);
 
             y += 18;

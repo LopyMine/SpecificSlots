@@ -15,9 +15,6 @@
   "specific_slots.pin_config.text2": "when connecting to %s",
 
   "specific_slots.mod_menu.dark_mode": "Dark Mode",
-  "specific_slots.mod_menu.shadow_items": "Shadow Items",
-  "specific_slots.mod_menu.shadow_items.tooltip": "Display Shadow Items with an item in their slot.",
-  "specific_slots.mod_menu.depth": "Depth",
   "specific_slots.mod_menu.wrong_slots": "Wrong Slots",
   "specific_slots.mod_menu.wrong_slots.wrong_subcategory": "Wrong Slots",
   "specific_slots.mod_menu.highlight_wrong_slots": "Highlight Wrong Slots",

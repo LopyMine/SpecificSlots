@@ -26,13 +26,6 @@ public class ModMenuIntegrationScreen {
                 .setDefaultValue(defaultConfig.isDarkMode)
                 .build());
 
-        ConfigCategory ghostSlots = configBuilder.getOrCreateCategory(Text.translatable("specific_slots.mod_menu.shadow_items"));
-
-        ghostSlots.addEntry(entryBuilder.startIntSlider(Text.translatable("specific_slots.mod_menu.depth"), config.depth, 1, 4)
-                .setSaveConsumer(depth -> config.depth = depth)
-                .setDefaultValue(defaultConfig.depth)
-                .build());
-
         ConfigCategory wrongSlots = configBuilder.getOrCreateCategory(Text.translatable("specific_slots.mod_menu.wrong_slots"));
 
         wrongSlots.addEntry(entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.highlight_wrong_slots"), config.enableHighlightWrongSlots)

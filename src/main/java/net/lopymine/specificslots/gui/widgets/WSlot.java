@@ -27,7 +27,6 @@ public class WSlot extends WWidget {
     private Consumer<Boolean> onToggle = null;
     @Nullable
     private Item item = Items.AIR;
-    private int depth = 1;
 
     private boolean dragging = false;
     private int draggingButton = -1;
@@ -84,9 +83,7 @@ public class WSlot extends WWidget {
         }
 
         if (isArmor()) {
-            for (int i = 0; i < depth; i++) {
-                ScreenDrawing.texturedRect(context, x + 1, y + 1, 16, 16, ArmorSlot.getTexture(this.armorSlotType), 0xFFFFFFFF);
-            }
+            ScreenDrawing.texturedRect(context, x + 1, y + 1, 16, 16, ArmorSlot.getTexture(this.armorSlotType), 0xFFFFFFFF);
         } else if (item != null) {
             if (!dragging || draggingButton == 2) {
                 context.drawItem(item.getDefaultStack(), x + 1, y + 1);
@@ -151,11 +148,6 @@ public class WSlot extends WWidget {
             }
         }
         return InputResult.IGNORED;
-    }
-
-    public WSlot setDepth(int depth) {
-        this.depth = depth;
-        return this;
     }
 
     public WSlot setArmorType(ArmorSlot.ArmorSlotType type) {

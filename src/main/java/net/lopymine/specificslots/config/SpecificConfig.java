@@ -19,7 +19,6 @@ public class SpecificConfig {
     public Integer emptyHighlightColor = 16711935;
     public Integer wrongHighlightAlpha = 30;
     public Integer emptyHighlightAlpha = 30;
-    public Integer depth = 1;
 
     public SpecificConfig() {}
 
