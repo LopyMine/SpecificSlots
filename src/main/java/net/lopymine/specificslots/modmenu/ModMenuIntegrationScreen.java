@@ -28,6 +28,25 @@ public class ModMenuIntegrationScreen {
 
         ConfigCategory wrongSlots = configBuilder.getOrCreateCategory(Text.translatable("specific_slots.mod_menu.wrong_slots"));
 
+        SubCategoryBuilder ghostItemsColor = entryBuilder.startSubCategory(Text.translatable("specific_slots.mod_menu.wrong_slots.ghost_items_subcategory"));
+
+        ghostItemsColor.add(0, entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.ghost_items.toggle"), config.enableRenderGhostItems)
+                .setSaveConsumer(bl -> config.enableRenderGhostItems = bl)
+                .setDefaultValue(defaultConfig.enableRenderGhostItems)
+                .build());
+
+        ghostItemsColor.add(1, entryBuilder.startColorField(Text.translatable("specific_slots.mod_menu.ghost_items.color"), config.ghostItemsColor)
+                .setSaveConsumer(color -> config.ghostItemsColor = color)
+                .setDefaultValue(defaultConfig.ghostItemsColor)
+                .build());
+
+        ghostItemsColor.add(2, entryBuilder.startIntSlider(Text.translatable("specific_slots.mod_menu.ghost_items.alpha"), config.ghostItemsAlpha, 0, 100)
+                .setSaveConsumer(alpha -> config.ghostItemsAlpha = alpha)
+                .setDefaultValue(defaultConfig.ghostItemsAlpha)
+                .build());
+
+        wrongSlots.addEntry(ghostItemsColor.build());
+
         SubCategoryBuilder wrongSlotsColor = entryBuilder.startSubCategory(Text.translatable("specific_slots.mod_menu.wrong_slots.wrong_subcategory"));
 
         wrongSlotsColor.add(0, entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.highlight_wrong_slots.toggle"), config.enableHighlightWrongSlots)
@@ -49,9 +68,9 @@ public class ModMenuIntegrationScreen {
 
         SubCategoryBuilder emptySlotsColor = entryBuilder.startSubCategory(Text.translatable("specific_slots.mod_menu.wrong_slots.empty_subcategory"));
 
-        emptySlotsColor.add(0, entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.highlight_empty_slots.toggle"), config.enableHighlightWrongSlots)
-                .setSaveConsumer(bl -> config.enableHighlightWrongSlots = bl)
-                .setDefaultValue(defaultConfig.enableHighlightWrongSlots)
+        emptySlotsColor.add(0, entryBuilder.startBooleanToggle(Text.translatable("specific_slots.mod_menu.highlight_empty_slots.toggle"), config.enableHighlightEmptySlots)
+                .setSaveConsumer(bl -> config.enableHighlightEmptySlots = bl)
+                .setDefaultValue(defaultConfig.enableHighlightEmptySlots)
                 .build());
 
         emptySlotsColor.add(1, entryBuilder.startColorField(Text.translatable("specific_slots.mod_menu.highlight_empty_slots.color"), config.emptyHighlightColor)

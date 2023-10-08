@@ -16,6 +16,10 @@
 
   "specific_slots.mod_menu.dark_mode": "Dark Mode",
   "specific_slots.mod_menu.wrong_slots": "Wrong Slots",
+  "specific_slots.mod_menu.wrong_slots.ghost_items_subcategory": "Ghost Items",
+  "specific_slots.mod_menu.ghost_items.toggle": "Render Ghost Items",
+  "specific_slots.mod_menu.ghost_items.color": "Ghost Items Color",
+  "specific_slots.mod_menu.ghost_items.alpha": "Ghost Items Alpha",
   "specific_slots.mod_menu.wrong_slots.wrong_subcategory": "Wrong Slots",
   "specific_slots.mod_menu.highlight_wrong_slots.toggle": "Highlight Wrong Slots",
   "specific_slots.mod_menu.highlight_wrong_slots.color": "Wrong Slots Color",

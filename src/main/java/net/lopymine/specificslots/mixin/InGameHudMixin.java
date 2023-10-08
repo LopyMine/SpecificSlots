@@ -5,6 +5,7 @@ import net.lopymine.specificslots.autosort.SlotInfoImpl;
 import net.lopymine.specificslots.config.SpecificConfig;
 import net.lopymine.specificslots.config.inventory.InventoryConfig;
 import net.lopymine.specificslots.utils.ItemUtils;
+import net.lopymine.specificslots.utils.Painters;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
@@ -57,13 +58,6 @@ public class InGameHudMixin {
             return;
         }
 
-        if (!slotInfo.hasInventoryItem() && slotInfo.hasConfigItem()) {
-            context.fill(x, y, x + 16, y + 16, config.getEmptyHighlightColor());
-            context.drawItem(configItem.getDefaultStack(), x, y);
-        } else if (slotInfo.isWrong() && config.enableHighlightWrongSlots) {
-            context.fill(x, y, x + 16, y + 16, config.getWrongHighlightColor());
-        } else if (slotInfo.getConfigItem() == slotInfo.getInventoryItem() && slotInfo.getConfigItem() != Items.AIR && config.enableHighlightRightSlots) {
-            context.fill(x, y, x + 16, y + 16, config.getRightHighlightColor());
-        }
+        Painters.highlightSlot(context, slotInfo, x, y, config);
     }
 }

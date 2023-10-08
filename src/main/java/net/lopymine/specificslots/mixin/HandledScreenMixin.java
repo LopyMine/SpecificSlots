@@ -1,5 +1,7 @@
 package net.lopymine.specificslots.mixin;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+import me.shedaniel.math.Color;
 import net.lopymine.specificslots.SpecificSlots;
 import net.lopymine.specificslots.autosort.SlotInfoImpl;
 import net.lopymine.specificslots.autosort.SwapManagerImpl;
@@ -12,6 +14,7 @@ import net.lopymine.specificslots.gui.widgets.vanilla.WarningWidget;
 import net.lopymine.specificslots.handlers.HandledScreenHelper;
 import net.lopymine.specificslots.modmenu.enums.SortMode;
 import net.lopymine.specificslots.utils.ItemUtils;
+import net.lopymine.specificslots.utils.Painters;
 import net.lopymine.specificslots.utils.mixins.IShiftClickableScreen;
 import net.lopymine.specificslots.utils.mixins.ISpecificScreen;
 import net.minecraft.client.MinecraftClient;
@@ -19,6 +22,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
@@ -157,18 +161,37 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
             return;
         }
 
-        if (!slotInfo.hasInventoryItem() && slotInfo.hasConfigItem() && config.enableHighlightEmptySlots) {
-            context.fill(x, y, x + 16, y + 16, config.getEmptyHighlightColor());
-            context.drawItem(configItem.getDefaultStack(), x, y);
-        } else if (slotInfo.isWrong() && config.enableHighlightWrongSlots) {
+        Painters.highlightSlot(context, slotInfo, x, y, config);
+        if (slotInfo.isWrong()) {
             WarningTooltipData data = new WarningTooltipData(slotInfo.getConfigItem().getDefaultStack(), slotInfo.getInventoryItem().getDefaultStack(), slot + (isHotBar ? 27 : 0));
             if (!warningWidget.data.contains(data)) {
                 warningWidget.data.add(data);
             }
-            context.fill(x, y, x + 16, y + 16, config.getWrongHighlightColor());
-        } else if (slotInfo.getConfigItem() == slotInfo.getInventoryItem() && slotInfo.getConfigItem() != Items.AIR && config.enableHighlightRightSlots) {
-            context.fill(x, y, x + 16, y + 16, config.getRightHighlightColor());
         }
+
+//        if (!slotInfo.hasInventoryItem() && slotInfo.hasConfigItem()) {
+////            RenderSystem.enableDepthTest();
+//            float[] shaderColor = RenderSystem.getShaderColor();
+//            float[] temp = new float[]{shaderColor[0], shaderColor[1], shaderColor[2], shaderColor[3]};
+//            Color color = Color.ofTransparent(config.ghostItemsColor);
+//            context.setShaderColor(((float)color.getRed()) / 255F, ((float)color.getGreen()) / 255F, ((float)color.getBlue()) / 255F, (float)config.ghostItemsAlpha / 100);
+////            context.setShaderColor(0.5F,0.5F,0.5F,0.25F);
+//            context.drawItem(configItem.getDefaultStack(), x, y);
+//            context.setShaderColor(temp[0], temp[1], temp[2], temp[3]);
+//            if (config.enableHighlightEmptySlots) {
+//                context.fill(x, y, x + 16, y + 16, config.getEmptyHighlightColor());
+//            }
+////            context.drawItem(configItem.getDefaultStack(), x, y, 0 , 0);
+////            context.fill(x, y, x + 16, y + 16, 10, config.getEmptyHighlightColor());
+//        } else if (slotInfo.isWrong() && config.enableHighlightWrongSlots) {
+//            WarningTooltipData data = new WarningTooltipData(slotInfo.getConfigItem().getDefaultStack(), slotInfo.getInventoryItem().getDefaultStack(), slot + (isHotBar ? 27 : 0));
+//            if (!warningWidget.data.contains(data)) {
+//                warningWidget.data.add(data);
+//            }
+//            context.fill(x, y, x + 16, y + 16, config.getWrongHighlightColor());
+//        } else if (slotInfo.getConfigItem() == slotInfo.getInventoryItem() && slotInfo.getConfigItem() != Items.AIR && config.enableHighlightRightSlots) {
+//            context.fill(x, y, x + 16, y + 16, config.getRightHighlightColor());
+//        }
     }
 
     @Override
