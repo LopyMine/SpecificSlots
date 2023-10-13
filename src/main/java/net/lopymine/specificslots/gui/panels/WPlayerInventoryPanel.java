@@ -19,31 +19,22 @@ import net.lopymine.specificslots.config.inventory.InventoryConfig;
 import net.lopymine.specificslots.gui.config.*;
 import net.lopymine.specificslots.gui.screen.SpecificScreen;
 import net.lopymine.specificslots.gui.widgets.*;
-import net.lopymine.specificslots.textures.ShadowItems;
 import net.lopymine.specificslots.utils.*;
 
 import java.util.*;
 import java.util.stream.Stream;
 
 public class WPlayerInventoryPanel extends WPlainPanel {
-    public static final Identifier HELMET = new Identifier("minecraft", "textures/item/empty_armor_slot_helmet.png");
-    public static final Identifier CHESTPLATE = new Identifier("minecraft", "textures/item/empty_armor_slot_chestplate.png");
-    public static final Identifier LEGS = new Identifier("minecraft", "textures/item/empty_armor_slot_leggings.png");
-    public static final Identifier BOOTS = new Identifier("minecraft", "textures/item/empty_armor_slot_boots.png");
-    public static final Identifier OFFHAND = new Identifier("minecraft", "textures/item/empty_armor_slot_shield.png");
-    private static final List<Identifier> list = List.of(HELMET, CHESTPLATE, LEGS, BOOTS, OFFHAND);
     private final MinecraftClient client = MinecraftClient.getInstance();
     private final SpecificConfig config;
     private final Set<WSlot> selectedSlots = new HashSet<>();
     private final Screen parent;
-    private final WGhostItemsShow showWidget;
     private ArrayList<WSlot> inventory;
     private ArrayList<WSlot> hotBar;
 
-    public WPlayerInventoryPanel(InventoryConfig inventoryConfig, Screen parent, WGhostItemsShow showWidget, SpecificConfig config) {
+    public WPlayerInventoryPanel(InventoryConfig inventoryConfig, Screen parent, SpecificConfig config) {
         this.config = config;
         this.parent = parent;
-        this.showWidget = showWidget;
 
         this.inventory = createSlots(inventoryConfig.getInventory().stream().flatMap(s -> Stream.of(ItemUtils.getItemByName(s))).toList(), 0);
         this.createInventorySlots();
@@ -103,16 +94,12 @@ public class WPlayerInventoryPanel extends WPlainPanel {
                     Set<WSlot> slots = new HashSet<>(selectedSlots);
 
                     for (WSlot slot : slots) {
-                        slot.setTexture(null)
-                                .setItem(Items.AIR)
-                                .setToggle(false);
+                        slot.setItem(Items.AIR).setToggle(false);
 
                         removeSelectedSlot(slot);
                     }
                 }
-            }.setItem(item).setTexture(ShadowItems.getTexture(item))
-                    .setDepth(config.depth)
-                    .setShowWidget(showWidget);
+            }.setItem(item);
 
             list.add(slot);
         }
@@ -218,14 +205,10 @@ public class WPlayerInventoryPanel extends WPlainPanel {
         int y = 0;
         int x = 0;
 
-        for (Identifier identifier : list) {
+        for (ArmorSlot.ArmorSlotType type : ArmorSlot.ArmorSlotType.values()) {
 
             WSlot slot = new WSlot(-1)
-                    .setTexture(identifier)
-                    .setArmor(true)
-                    .setItem(Items.AIR)
-                    .setDepth(config.depth)
-                    .setShowWidget(this.showWidget);
+                    .setArmorType(type);
             this.add(setClickAction(slot), 7 + x, 7 + y);
 
             y += 18;

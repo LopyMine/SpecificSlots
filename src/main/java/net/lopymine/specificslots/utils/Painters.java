@@ -1,8 +1,14 @@
 package net.lopymine.specificslots.utils;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+import me.shedaniel.math.Color;
+import net.lopymine.specificslots.autosort.SlotInfoImpl;
+import net.lopymine.specificslots.config.SpecificConfig;
+import net.lopymine.specificslots.gui.tooltip.WarningTooltipData;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.gui.tooltip.BundleTooltipComponent;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
 import io.github.cottonmc.cotton.gui.client.*;
@@ -20,11 +26,7 @@ public class Painters {
     public static final Identifier DARK_PLAYER_BACKGROUND = new Identifier(SpecificSlots.ID(),"textures/gui/inventory/inventory_dark.png");
     public static final Identifier DARK_SLOT = new Identifier(SpecificSlots.ID, "textures/gui/slot/bundle_dark.png");
     public static final Identifier selectedSlot = new Identifier(SpecificSlots.ID, "textures/gui/slot/slot_select.png");
-    public static final Identifier SHOW_ITEMS_FOCUS = new Identifier(SpecificSlots.ID, "textures/gui/buttons/show_items_focus.png");
-    public static final Identifier SHOW_ITEMS = new Identifier(SpecificSlots.ID, "textures/gui/buttons/show_items.png");
     public static final Identifier IMPORT_INVENTORY = new Identifier(SpecificSlots.ID, "textures/gui/buttons/import_inventory.png");
-    public static final Identifier LOCKED = new Identifier(SpecificSlots.ID, "textures/gui/buttons/locked.png");
-    public static final Identifier UNLOCKED = new Identifier(SpecificSlots.ID, "textures/gui/buttons/unlocked.png");
     public static final Identifier CLEAR_CONFIG = new Identifier(SpecificSlots.ID, "textures/gui/buttons/clear_config.png");
     public static final Identifier CLEAR_CONFIG_DARK = new Identifier(SpecificSlots.ID, "textures/gui/buttons/clear_config_dark.png");
     public static final Identifier PIN = new Identifier(SpecificSlots.ID(), "textures/gui/buttons/pin.png");
@@ -56,4 +58,25 @@ public class Painters {
         return bl ? v1 : v2;
     }
 
+    public static void highlightSlot(DrawContext context, SlotInfoImpl slotInfo, int x, int y, SpecificConfig config) {
+        if (!slotInfo.hasInventoryItem() && slotInfo.hasConfigItem()) {
+//            RenderSystem.enableDepthTest();
+            float[] shaderColor = RenderSystem.getShaderColor();
+            float[] temp = new float[]{shaderColor[0], shaderColor[1], shaderColor[2], shaderColor[3]};
+            Color color = Color.ofTransparent(config.ghostItemsColor);
+            context.setShaderColor(((float)color.getRed()) / 255F, ((float)color.getGreen()) / 255F, ((float)color.getBlue()) / 255F, (float)config.ghostItemsAlpha / 100);
+//            context.setShaderColor(0.5F,0.5F,0.5F,0.25F);
+            context.drawItem(slotInfo.getConfigItem().getDefaultStack(), x, y);
+            context.setShaderColor(temp[0], temp[1], temp[2], temp[3]);
+            if (config.enableHighlightEmptySlots) {
+                context.fill(x, y, x + 16, y + 16, config.getEmptyHighlightColor());
+            }
+//            context.drawItem(configItem.getDefaultStack(), x, y, 0 , 0);
+//            context.fill(x, y, x + 16, y + 16, 10, config.getEmptyHighlightColor());
+        } else if (slotInfo.isWrong() && config.enableHighlightWrongSlots) {
+            context.fill(x, y, x + 16, y + 16, config.getWrongHighlightColor());
+        } else if (slotInfo.getConfigItem() == slotInfo.getInventoryItem() && slotInfo.getConfigItem() != Items.AIR && config.enableHighlightRightSlots) {
+            context.fill(x, y, x + 16, y + 16, config.getRightHighlightColor());
+        }
+    }
 }
