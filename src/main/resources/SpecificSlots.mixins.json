@@ -11,6 +11,7 @@
     "InGameHudMixin",
     "InventoryScreenMixin",
     "MinecraftClientMixin",
+    "ReloadableResourceManagerImplMixin",
     "ScreenMixin"
   ],
   "injectors": {

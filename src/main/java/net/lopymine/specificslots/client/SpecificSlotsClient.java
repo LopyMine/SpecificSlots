@@ -1,17 +1,26 @@
 package net.lopymine.specificslots.client;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
-import net.lopymine.specificslots.gui.tooltip.WarningButtonTooltipComponent;
-import net.lopymine.specificslots.gui.tooltip.WarningTooltipData;
-import net.lopymine.specificslots.gui.tooltip.utils.TooltipComponents;
-import net.lopymine.specificslots.gui.tooltip.utils.TooltipComponentsData;
-import net.minecraft.client.gui.tooltip.OrderedTextTooltipComponent;
-import net.minecraft.client.gui.tooltip.TooltipComponent;
-import net.minecraft.text.Text;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.tooltip.*;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.text.*;
+import net.minecraft.text.ClickEvent.Action;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.context.CommandContext;
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.command.v2.*;
+import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+
+import net.lopymine.specificslots.gui.tooltip.*;
+import net.lopymine.specificslots.gui.tooltip.utils.*;
+import net.lopymine.specificslots.textures.ShadowItems;
+import net.lopymine.specificslots.utils.ItemUtils;
+
+import java.util.*;
 
 public class SpecificSlotsClient implements ClientModInitializer {
 
